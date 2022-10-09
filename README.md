@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Online store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Task 1
+Используя React, React-Router и предоставленное API, необходимо написать интернет-магазин.
+Данное приложение должно состоять из трёх страниц (сделать навигационное меню по сайту (доступно на всех страницах)):
 
-## Available Scripts
+Главная. По загрузке приложения пользователь оказывается на этой странице где сразу перед ним открывается список доступных товаров. Каждый товар должен иметь картинку, имя, цену и кнопку «добавить в корзину». Имя – это сслыка на страницу с подробным описанием товара. Если товар больше недоступен – копка «Добавить в корзину» должна замениться на текст «Нету в наличии». По клику на «Добавить корзину» - одна еденица товара добавляется в корзину. В интерфейсе приложения, на всех страницах дожно быть доступное поле «В корзине Х товаров на сумму Y», где Х это текущее количество добавленных товаров в корзину, а Y это общая цена добавленного товара в корзину. Саму страницу корзины в этом ДЗ мы реализовывать не будем.
 
-In the project directory, you can run:
+Страница подробного описания товара (её не должно быть в меню, на нее можно перейти только кликнув на имя из списка товаров) – должна показывать помимо картинки, имя, цены и кнопки добавить в корзину, так же поле с полным описанием товара, количество товара в наличии. Возле кнопки добавить в корзину должно быть поле выбора количеста товара которое хотим добавить в корзину. Ссылка данной страницы должена содержать в себе id товара.
 
-### `npm start`
+Страница О Магазине – краткая информация о магазине.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Если пользователь пытается ввести в адресную строку ссылку на несуществующую страницу – его должно автоматически перекидывать на страницу с сообщением ошибки «Что-то пошло не так. Данной страницы не существует».
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+В нашем приложении так же должна быть кнопка «Авторизация». По нажатию на которую должно появиться модальное окно с полями для логина и пароля, а так же кнопкой «Войти» и «Отмена» и крестиком в правом верхнем углу окна по нажатию на который модальное окно закрывается (аналогичное действие происходит при клике на кнопку «Отмена»). API предоставляет уже два созданных пользователя с разными правами доступа – user и admin.
 
-### `npm test`
+Если введен недействительный логин и/или пароль, то после нажатия кнопки «Войти» необходимо вывести сообщение об ошибке (под блоком с полями логин и пароль).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Если пользователь ввел корректные данные, то модальное окно закрывается и мы автоматически переходим на страницу Home. Текст кнопки «Войти» меняется на «Выход». По нажатию на неё пользователя разлогинивает.
 
-### `npm run build`
+Для разлогиненных пользователей мы должны скрывать блок корзина, а так же вместо кнопки «Купить» возле каждого товара из списка на главной странице и на странице подробной информации о товаре, мы должны выводить сообщение «Чтобы добавить товар в корзину залогинтесь».
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Если пользователь авторизовался с правами admin, у него должна появится возможность редактировать имя, подробное описание и количество доступного товара на странице подробной информации товара. Как это должно выглядеть – Должна появится кнопка «Редактировать», по нажатию на которую данные поля заменяются на input’ы, а поле подробное описание товара на textarea.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+После перехода в режим редактирования – должны появиться кнопки «Сохранить» и «Отмена».
+Поля должны проходить валидацию, а именно не быть пустыми (пробелы не считаются, а поэтому их нужно очищать) и поля input не должны привышать лимит 30 символов, а textarea – 600. Если какое поле не проходит валидацию – выводим об этом соотствующее сообщение по нажатию на кнопку «Сохранить».
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Приложение должно иметь презентабельный вид. Для стилизации используем CSS модули. Для написания приложения используем только библиотеки React и React-Router, все остальные библиотеки использовать запрещено. SVG иконки можно взять с бесплатного ресурса https://freeicons.io/ и разместить у себя в проекте в папке icons.
 
-### `npm run eject`
+### Task 2
+Подключить Redux (не redux-toolkit) к нашему приложению. Теперь вся информация должна храниться и изменяться в нем.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Доработать корзину. Теперь возле блока с информацией о состоянии корзины, должна быть иконка (.svg) корзины по нажатию на которую либо мы переходим на страницу с корзиной, либо открывается модальное окно со списком товаров в корзине. Для получения данных для корзины используем предоставленное API. Корзина должна представлять из себя таблицу где в первой колонке отображается id товара, во второй имя, третьей – цена за еденицу товара, четвертая колонка – количество добавленного товара с кнопками, пятая колонка – общая сумма за данный товар, шестая колонка – кнопка «Удалить», по нажатию на которую данная товарная позиция пропадает из корзины. В конце таблицы должно быть поле с указанием общей суммы за все добавленные в корзину товары. Так же еще ниже должны быть кнопки «Очистить корзину» – по нажатию наша корзина очищается полностью, и кнопка «Оплатить» - её оставляем отключенной (disabled).
