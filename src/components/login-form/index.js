@@ -1,16 +1,15 @@
-import React, {useCallback, useEffect, useState, useContext} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {useNavigate} from "react-router-dom";
 import CustomInput from '../custom-input';
 import Field from '../field';
 import './style.css';
-import { ACTIONS, DataContext } from "../../context/dataContext";
 
-function FormQuestion() { 
-  const { dispatch } = useContext(DataContext);
+function LoginForm(props) { 
 
   const navigate = useNavigate();
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // проверка все ли поля валидны
+  const [isValidPassed, setIsValidPassed] = useState(false)
 
   // данные для контроля input и textarea
   const [data, setData] = useState({
@@ -55,13 +54,21 @@ function FormQuestion() {
     },
 
     // показываем все наши данные
-    showInputsInJson: (e) => {
+    onLogin: (e) => {
       e.preventDefault();
+      // Валидируем по кнопке
       for (let inputItemData in data){
         callbacks.validation(inputItemData)
       }
 
-      setIsSubmitted(true)
+      // проверяем на пустые поля, если везде есть какие-либо знаки значит true
+      const isDataEmpty = Object.values(data).every(value => value.trim() !== "");
+      // устанавливаем, то что валидация пройдена
+      if (isDataEmpty){
+        setIsValidPassed(true)
+      }
+      // вход
+      props.onLogin({login: data.login, password: data.password})
     },
 
     // для смены состояния инпутов
@@ -73,6 +80,7 @@ function FormQuestion() {
     validation: (name) => {
       if (!data[name].trim()) {
         setDataError(prevData => ({...prevData, [name]: 'Поле пустое. Заполните пожалуйста.'}))
+        setIsValidPassed(false)
         return
       } else {
         setDataError(prevData => ({...prevData, [name]: ''}))
@@ -80,29 +88,18 @@ function FormQuestion() {
     }
   }
 
-  
   useEffect(() => {
-    const isDataErrorEmpty = Object.values(dataError).every(value => value === "");
-    
-    // проверка что все ошибки пустые, значит ошибок в валидации нету.
-    // также проверяем была уже нажата кнпока sumbit или нет
-    if (isSubmitted && isDataErrorEmpty) {
-      dispatch({
-        type: ACTIONS.SAVE_DATA,
-        payload: { 
-          data,
-          allInputs: [...inputs]
-        },
-      })
-      navigate('/')
+    if (isValidPassed && !props.errorLogin) {
+      navigate('/');
+      // закрываем модалку
+      props.onClose()
     }
-    setIsSubmitted(false)
-  }, [isSubmitted])
+  }, [isValidPassed, props.errorLogin])
 
   return (
     <>
-      <form className='FormQuestion' onSubmit={callbacks.showInputsInJson}>
-        <h1 className='FormQuestion-title'>Авторизация</h1>
+      <form className='LoginForm' onSubmit={callbacks.onLogin}>
+        <h1 className='LoginForm-title'>Авторизация</h1>
         {
           inputs.map((input) => (
           <Field label={input.label} error={dataError[input.name]} key={input.id} width={400}>
@@ -110,13 +107,14 @@ function FormQuestion() {
           </Field>
           ))
         }
-        <div className='FormQuestion-buttons'>
-          <button className='FormQuestion-cancelBtn' onClick={callbacks.resetForm}>Отмена</button>
-          <button className='FormQuestion-saveBtn' type='submit'>Войти</button>
+        <div className='LoginForm-loginError'>{isValidPassed && props.errorLogin}</div>
+        <div className='LoginForm-buttons'>
+          <button className='LoginForm-cancelBtn' onClick={callbacks.resetForm}>Отмена</button>
+          <button className='LoginForm-saveBtn' type='submit'>Войти</button>
         </div>
       </form>
   </>
   );
 }
 
-export default FormQuestion;
+export default React.memo(LoginForm);

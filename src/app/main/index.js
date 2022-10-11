@@ -6,8 +6,6 @@ import TopContainer from "../../containers/top";
 import { useDispatch } from "react-redux";
 import actionsCatalog from "../../store/catalog/actions";
 
-console.log(actionsCatalog)
-
 function Main() {
 
   const dispatch = useDispatch();

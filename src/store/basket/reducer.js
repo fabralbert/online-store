@@ -1,4 +1,3 @@
-// Начальное состояние товара
 const initialState = {
   items: [],
   sum: 0,
@@ -9,6 +8,13 @@ const initialState = {
   switch (action.type) {
 
     case "basket/add":
+      return { 
+        ...state, 
+        items: action.payload.items, 
+        sum: action.payload.sum, 
+        totalAmount: action.payload.totalAmount
+      };
+    case "basket/remove":
       return { 
         ...state, 
         items: action.payload.items, 

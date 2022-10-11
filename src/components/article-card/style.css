@@ -1,5 +1,16 @@
 .ArticleCard {
+    font-size: 20px;
     padding: 20px 35px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ArticleCard-left{
+
+}
+
+.ArticleCard-right{
+    max-width: 600px;
 }
 
 .ArticleCard-description {
@@ -22,7 +33,11 @@
 
 }
 
-.ArticleCard-img{
-    padding-top: 20px;
+.ArticleCard img{
+    padding-top: 10px;
     width: 300px;
+}
+
+.ArticleCard-btn{
+    font-size: 24px;
 }

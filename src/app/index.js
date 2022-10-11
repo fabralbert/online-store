@@ -17,8 +17,6 @@ function App() {
 
   const modal = useSelector(state => state.modals.name);
 
-  console.log('modal', modal)
-
   return (
     <>
       <DataProvider>

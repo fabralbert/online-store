@@ -33,6 +33,35 @@ const actionsBasket = {
     }
   },
 
+  removeFromBasket: (id) => {
+      return (dispatch, getState) => {
+      const item = getState().basket.items.find(item => item.id === id)
+
+      let items;
+      if (item.amount > 1){
+        items = getState().basket.items.map(item => {
+            if (item.id === id){
+              return {...item, amount: item.amount - 1, selfTotalSum: item.selfTotalSum - item.price}
+            }
+            return item
+          }
+        )
+      }
+      else {
+        const newItems = getState().basket.items.filter(item => item.id !== id)
+
+        items = newItems.map((item) => {
+          return {...item}
+        })
+      }
+
+      const sum = items.reduce((acc, item) => {
+        return item.amount * item.price + acc
+      }, 0)
+
+      dispatch({type: 'basket/remove', payload: {items, sum, totalAmount: items.length}});
+    }
+  }
 }
 
 export default actionsBasket;

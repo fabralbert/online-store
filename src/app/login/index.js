@@ -3,27 +3,34 @@ import LayoutFlex from "../../components/layouts/layout-flex";
 import FormQuestion from "../../components/login-form"
 import LayoutModal from "../../components/layouts/layout-modal";
 import actionsModals from "../../store/modals/actions";
-import { useDispatch } from "react-redux";
+import actionsLogin from "../../store/login/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
-  
+
   const dispatch = useDispatch();
+
+  const select = useSelector(state => ({
+    user: state.login.user,
+    error: state.login.error,
+  }));
+
 
   const callbacks = {
     // Закрытие любой модалки
     closeModal: useCallback(() => {
       dispatch(actionsModals.close());
     }, []),
+    // Логин
+    onLogin: useCallback((data) => {
+      dispatch(actionsLogin.signIn(data));
+    }, []),
   };
   
   return (
     <LayoutModal title={'Логин'} onClose={callbacks.closeModal}>
       <LayoutFlex flex={'center'}>
-        <div>тест</div>
-        <div>тест</div>
-        <div>тест</div>
-        <div>тест</div>
-        {/* <FormQuestion/> */}
+        <FormQuestion onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error}/>
       </LayoutFlex>
     </LayoutModal>
   )

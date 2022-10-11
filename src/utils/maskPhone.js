@@ -4,7 +4,6 @@ export default function maskPhone(value){
   }
 
   const phoneNumber = value.replace(/[^\d]/g, '');
-  console.log(phoneNumber)
   const phoneNumberLength = phoneNumber.length;
   if (phoneNumberLength < 2){
     return phoneNumber;

@@ -5,7 +5,7 @@ import './style.css';
 function LoginBtn(props) {
 
   return (
-    <button className='LoginBtn-link' onClick={props.onOpen}>Войти</button>
+    <button className='LoginBtn' onClick={props.onOpen}>Войти</button>
   )
 }
 

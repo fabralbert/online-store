@@ -16,7 +16,7 @@ function TopContainer() {
   };
 
   return (
-    <LayoutFlex flex="end">
+    <LayoutFlex flex="center">
       <LoginBtn onOpen={callbacks.openModalBasket}/>
     </LayoutFlex>
   );
