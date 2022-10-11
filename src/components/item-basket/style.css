@@ -1,0 +1,30 @@
+/* Пункт списка */
+.ItemBasket {
+
+}
+
+.ItemBasket-body{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ItemBasket-id{
+    min-width: 100px;
+}
+
+.ItemBasket-title{
+    min-width: 200px;
+}
+
+.ItemBasket-price{
+    min-width: 100px;
+}
+
+.ItemBasket-amount{
+    min-width: 100px;
+}
+
+.ItemBasket-total{
+    min-width: 100px;
+}

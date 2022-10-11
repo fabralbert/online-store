@@ -1,0 +1,20 @@
+.LayoutFlex{
+    display: flex;
+    flex-wrap: nowrap;
+    /* justify-content: space-between; */
+    padding: 10px 20px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.between{
+    justify-content: space-between;
+}
+
+.end{
+    justify-content: flex-end;
+}
+
+.center{
+    justify-content: center;
+}

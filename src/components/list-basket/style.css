@@ -1,0 +1,11 @@
+/*Список*/
+.ListBasket{
+
+}
+.ListBasket-item{
+    border-bottom: 1px dashed #ccc;
+}
+
+.ListBasket-item:first-child{
+    border-top: 1px dashed #ccc;
+}

@@ -1,0 +1,28 @@
+/* Контрол с общими действиями */
+.BasketSimple{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    font-size: 18px;
+}
+
+.BasketSimple-label{
+    display: flex;
+    align-items: center;
+}
+
+.BasketSimple-total{
+    font-weight: bold;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.BasketSimple-button{
+    content: '';
+    background-image: url(../../img/basket.svg);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

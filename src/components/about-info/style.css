@@ -1,0 +1,12 @@
+.AboutInfo{
+  padding: 20px;
+}
+
+.AboutInfo-title{
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.AboutInfo-text{
+  font-size: 20px;
+}

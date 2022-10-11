@@ -1,0 +1,19 @@
+.BasketTotal{
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.BasketTotal-sum{
+    margin: 10px;
+}
+
+.BasketTotal-btn-clear{
+    margin: 10px;
+}
+
+.BasketTotal-btn-pay{
+    margin: 10px;
+}
+
+
