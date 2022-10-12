@@ -12,6 +12,9 @@ function article(state = initialState, action){
     case "article/load-error":
       return { ...state, data: {}};
 
+    case "article/edit":
+      return { ...state, data: {...state.data, ...action.payload.data} };
+
     default:
       return state;
   }

@@ -39,7 +39,11 @@ function Article(){
     // отмена редактирования
     onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
     // сохранение новых данных
-    onSave: useCallback(() => setIsEdit(!isEdit), [isEdit]),
+    onSave: useCallback((data) => {
+      console.log('data', data)
+      dispatch(actionsArticle.editArticle(data));
+      setIsEdit(!isEdit);
+    }, [isEdit]),
   };
 
   return (

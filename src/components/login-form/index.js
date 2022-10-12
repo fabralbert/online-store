@@ -50,7 +50,8 @@ function LoginForm(props) {
         login: '',
         password: '',
       })
-      navigate('/')
+      // закрываем модалку
+      props.onClose()
     },
 
     // показываем все наши данные
@@ -90,6 +91,7 @@ function LoginForm(props) {
 
   useEffect(() => {
     if (isValidPassed && !props.errorLogin && props.user) {
+      console.log('проверка')
       navigate('/');
       // закрываем модалку
       props.onClose()
@@ -98,7 +100,6 @@ function LoginForm(props) {
   }, [isValidPassed, props.errorLogin, props.onClose, props.user])
 
   return (
-    <>
       <form className='LoginForm' onSubmit={callbacks.onLogin}>
         <h1 className='LoginForm-title'>Авторизация</h1>
         {
@@ -110,11 +111,10 @@ function LoginForm(props) {
         }
         <div className='LoginForm-loginError'>{isValidPassed && props.errorLogin}</div>
         <div className='LoginForm-buttons'>
-          <button className='LoginForm-cancelBtn' onClick={callbacks.resetForm}>Отмена</button>
+          <button className='LoginForm-cancelBtn' type='button' onClick={callbacks.resetForm}>Отмена</button>
           <button className='LoginForm-saveBtn' type='submit'>Войти</button>
         </div>
       </form>
-  </>
   );
 }
 

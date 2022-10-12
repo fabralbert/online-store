@@ -16,9 +16,9 @@ const actionsArticle =  {
     }
   },
 
-  close: () => {
-    return {type: 'modal/close'}
-  }
+  editArticle: (data) => {
+    return {type: 'article/edit', payload: {data}}
+  },
 }
 
 export default actionsArticle;

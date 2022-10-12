@@ -5,3 +5,12 @@
   padding: 2px;
   font-size: 18px;
 }
+
+.CustomInput-counter{
+  font-size: 20px;
+  text-align: right;
+}
+
+.CustomInput-errorLimit{
+  color: red;
+}

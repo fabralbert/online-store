@@ -70,3 +70,8 @@
 .ArticleCardEdit-warning:hover{
     text-decoration: underline;
 }
+
+.ArticleCardEdit-error{
+    color: red;
+    font-size: 20px;
+}
