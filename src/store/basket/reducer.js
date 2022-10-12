@@ -12,14 +12,22 @@ const initialState = {
         ...state, 
         items: action.payload.items, 
         sum: action.payload.sum, 
-        totalAmount: action.payload.totalAmount
+        totalAmount: action.payload.totalAmount,
       };
     case "basket/remove":
       return { 
         ...state, 
         items: action.payload.items, 
         sum: action.payload.sum, 
-        totalAmount: action.payload.totalAmount
+        totalAmount: action.payload.totalAmount,
+      };
+
+    case "basket/clear":
+      return { 
+        ...state, 
+        items: [], 
+        sum: 0, 
+        totalAmount: 0,
       };
 
     default:

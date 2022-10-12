@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from "react";
+import React from "react";
 import Layout from "../../components/layouts/layout";
 import ToolsContainer from "../../containers/tools"
 import TopContainer from "../../containers/top"
@@ -15,4 +15,4 @@ function EmptyPage() {
   )
 }
 
-export default EmptyPage;
+export default React.memo(EmptyPage);

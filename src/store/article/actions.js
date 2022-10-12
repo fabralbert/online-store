@@ -1,4 +1,4 @@
-import { dataItems } from '../../data/dataItems' // симуляция сервера с товарами
+import { dataItems } from '../../dataToFetch/MyFetchItems' // симуляция сервера с товарами
 
 const actionsArticle =  {
 
@@ -19,6 +19,10 @@ const actionsArticle =  {
       }
     }
   },
+
+  close: () => {
+    return {type: 'modal/close'}
+  }
 }
 
 export default actionsArticle;

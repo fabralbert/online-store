@@ -10,11 +10,8 @@ import actionsArticle from "../../store/article/actions";
 
 function Article(){
   
-  // Параметры из пути /articles/:id
   const params = useParams();
   
-  console.log(params)
-
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -6,11 +6,16 @@ import numberFormat from "../../utils/number-format";
 function BasketSimple(props) {
 
   return (
-    <div className='BasketSimple'>
-      <span className='BasketSimple-label'>В корзине:</span>
-      <span className='BasketSimple-total'>{props.totalAmount ? `${props.totalAmount} ${plural(props.totalAmount, 'товар', 'товара', 'товаров')} на сумму ${numberFormat(props.sum)} ₽` : 'пусто'}</span>
-      <div className='BasketSimple-button' onClick={props.onOpen}/>
-    </div>
+    <>
+      {
+        props.user && 
+        <div className='BasketSimple'>
+          <span className='BasketSimple-label'>В корзине:</span>
+          <span className='BasketSimple-total'>{props.totalAmount ? `${props.totalAmount} ${plural(props.totalAmount, 'товар', 'товара', 'товаров')} на сумму ${numberFormat(props.sum)} ₽` : 'пусто'}</span>
+          <div className='BasketSimple-button' onClick={props.onOpen}/>
+        </div>
+      }
+    </>
   )
 }
 

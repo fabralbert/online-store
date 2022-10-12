@@ -1,13 +1,15 @@
 import React, {useCallback} from 'react';
-import propTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import numberFormat from "../../utils/number-format";
 import './style.css';
 
 function Item(props) {
 
+  console.log('user', props.user)
+
   const callbacks = {
-    onAdd: (e) => props.onAdd(props.item.id)
+    onAdd: (e) => props.onAdd(props.item.id),
+    onOpen: () => props.onOpen()
   };
 
   return (
@@ -24,7 +26,10 @@ function Item(props) {
           <div className='Item-price'>{numberFormat(props.item.price)} ₽</div>
         </div>
         <div className='Item-footer'>
-          <button className='Item-btn' onClick={callbacks.onAdd}>Добавить</button>
+          {props.user ? 
+          <button className='Item-btn' onClick={callbacks.onAdd}>Добавить</button> :
+          <div className='Item-warning' onClick={callbacks.onOpen}>«Чтобы добавить товар в корзину залогинтесь»</div>
+          }
         </div>
     </div>
   )

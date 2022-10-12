@@ -2,22 +2,31 @@ import React, {useCallback} from "react";
 import LayoutFlex from "../../components/layouts/layout-flex";
 import LoginBtn from "../../components/login-btn"
 import actionsModals from "../../store/modals/actions";
-import { useDispatch } from "react-redux";
+import actionsLogin from "../../store/login/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 function TopContainer() {
+
+  const select = useSelector(state => ({
+    user: state.login.user,
+  }));
 
   const dispatch = useDispatch();
 
   const callbacks = {
     // Открытие корзины
-    openModalBasket: useCallback(() => {
+    openModalLogin: useCallback(() => {
       dispatch(actionsModals.open('login'));
+    }, []),
+    // Открытие корзины
+    onUnlogin: useCallback(() => {
+      dispatch(actionsLogin.signOut());
     }, []),
   };
 
   return (
     <LayoutFlex flex="center">
-      <LoginBtn onOpen={callbacks.openModalBasket}/>
+      <LoginBtn onOpen={callbacks.openModalLogin} user={select.user} onUnlogin={callbacks.onUnlogin}/>
     </LayoutFlex>
   );
 }

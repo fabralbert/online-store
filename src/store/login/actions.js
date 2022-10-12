@@ -1,4 +1,4 @@
-import { MyFetch } from '../../data/MyFetch' // симуляция сервера
+import { MyFetch } from '../../dataToFetch/MyFetchUsers' // симуляция сервера
 
 const actionsLogin = {
 
@@ -20,6 +20,10 @@ const actionsLogin = {
       }
     }
   },
+  
+  signOut: () => {
+    return {type: 'login/unlogin'}
+  }
 }
 
 export default actionsLogin

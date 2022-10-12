@@ -12,7 +12,8 @@ function ToolsContainer() {
   const select = useSelector(state => ({
     items: state.basket.items,
     totalAmount: state.basket.totalAmount,
-    sum: state.basket.sum
+    sum: state.basket.sum,
+    user: state.login.user,
   }));
 
   const callbacks = {
@@ -32,7 +33,7 @@ function ToolsContainer() {
   return (
     <LayoutFlex flex='between'>
       <Menu items={options.menu}/>
-      <BasketSimple onOpen={callbacks.openModalBasket} totalAmount={select.totalAmount} sum={select.sum}/>
+      <BasketSimple onOpen={callbacks.openModalBasket} totalAmount={select.totalAmount} sum={select.sum} user={select.user}/>
     </LayoutFlex>
   );
 }

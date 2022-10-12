@@ -6,7 +6,6 @@ import EmptyPage from './empty-page';
 import Article from './article';
 import Login from './login';
 import Basket from './basket';
-import { DataProvider } from "../context/dataContext";
 import {useSelector} from 'react-redux'
 
 /**
@@ -19,15 +18,12 @@ function App() {
 
   return (
     <>
-      <DataProvider>
         <Routes>
           <Route path={'/'} element={<Main/>}/>
           <Route path={"/about"} element={<About/>}/>
-          {/* <Route path={"/login"} element={<Login/>}/> */}
           <Route path={"/articles/:id"} element={<Article/>}/>
           <Route path="*" element={<EmptyPage/>}/>
         </Routes>
-      </DataProvider>
       {modal === 'login' && <Login/>}
       {modal === 'basket' && <Basket/>}
     </>

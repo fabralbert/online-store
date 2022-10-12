@@ -61,6 +61,9 @@ const actionsBasket = {
 
       dispatch({type: 'basket/remove', payload: {items, sum, totalAmount: items.length}});
     }
+  },
+  clearBasket: () => {
+    return {type: 'basket/clear'}
   }
 }
 
