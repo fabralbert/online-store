@@ -3,13 +3,9 @@ import { dataItems } from '../../dataToFetch/MyFetchItems' // симуляция
 const actionsArticle =  {
 
   load: (id) => {
-    console.log('id', id)
-
     return async(dispatch, getState) => {
       try {
         const json = await dataItems.find((item) => item.id === parseInt(id));
-
-        console.log('json', json)
 
         dispatch({type: 'article/load-success', payload: {data: json}});
 

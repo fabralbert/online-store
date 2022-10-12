@@ -14,8 +14,6 @@ function CatalogList() {
     user: state.login.user,
   }));
 
-  console.log('user', select.user)
-
   const callbacks = {
     // добавление товара в корзину
     onAdd: useCallback((id) => dispatch(actionsBasket.addToBasket(id)), []),

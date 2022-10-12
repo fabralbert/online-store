@@ -30,7 +30,7 @@ function Login() {
   return (
     <LayoutModal title={'Логин'} onClose={callbacks.closeModal}>
       <LayoutFlex flex={'center'}>
-        <FormQuestion onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error}/>
+        <FormQuestion onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error} user={select.user}/>
       </LayoutFlex>
     </LayoutModal>
   )

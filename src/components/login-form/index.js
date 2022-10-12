@@ -89,12 +89,13 @@ function LoginForm(props) {
   }
 
   useEffect(() => {
-    if (isValidPassed && !props.errorLogin) {
+    if (isValidPassed && !props.errorLogin && props.user) {
       navigate('/');
       // закрываем модалку
       props.onClose()
     }
-  }, [isValidPassed, props.errorLogin])
+
+  }, [isValidPassed, props.errorLogin, props.onClose, props.user])
 
   return (
     <>

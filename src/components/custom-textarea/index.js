@@ -9,7 +9,7 @@ function CustomTextArea(props) {
 
   return (
     <div className='check'>
-      <textarea className='CustomTextArea' rows={props.rows} type={props.type} name={props.name} value={props.value} placeholder={props.placeholder} onChange={onChangeValue} style={{width: `${props.width}px`}}/>
+      <textarea className='CustomTextArea' rows={props.rows} type={props.type} name={props.name} value={props.value} placeholder={props.placeholder} defaultValue={props.defaultValue} onChange={onChangeValue} style={{width: `${props.width}px`}}/>
       {!props.error &&
       <div className='CustomTextArea-counter'>
           <span className='CustomTextArea-total' style={{color: `${props.totalCount > props.countLimit ? 'red' : 'black'}`}}>{props.totalCount}</span>

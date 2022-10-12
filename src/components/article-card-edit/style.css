@@ -1,70 +1,72 @@
-.ArticleCard {
+.ArticleCardEdit {
     font-size: 20px;
     padding: 20px 35px;
 
 }
 
-.ArticleCard-content{
+.ArticleCardEdit-content{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.ArticleCard-left{
+.ArticleCardEdit-left{
 
 }
 
-.ArticleCard-right{
-    max-width: 600px;
+.ArticleCardEdit-right{
+    min-width: 600px;
 }
 
-.ArticleCard-description {
+.ArticleCardEdit-description {
     font-size: 30px;
     font-weight: 700;
     margin: 20px 0;
 }
 
-.ArticleCard-prop {
+.ArticleCardEdit-prop {
+    width: 100%;
     margin: 20px 0;
 }
 
-.ArticleCard-label{
+.ArticleCardEdit-label{
     padding: 10px 0;
     font-weight: 700;
     padding-right: 10px;
 }
 
-.ArticleCard-value{
-
+.ArticleCardEdit-value{
+    font-size: 20px;
+    width: 100%;
 }
 
-.ArticleCard img{
+.ArticleCardEdit img{
     padding-top: 10px;
     width: 300px;
 }
 
-.ArticleCard-buttons{
+.ArticleCardEdit-buttons{
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.ArticleCard-btnAdd{
+.ArticleCardEdit-btnAdd{
     font-size: 24px;
 }
 
-.ArticleCard-btnEdit{
+.ArticleCardEdit-btnEdit{
     text-align: center;
     font-size: 24px;
 }
 
-.ArticleCard-warning{
+.ArticleCardEdit-warning{
     color: rgb(19, 19, 168);
     text-align: center;
     font-size: 20px;
     cursor: pointer;
 }
 
-.ArticleCard-warning:hover{
+.ArticleCardEdit-warning:hover{
     text-decoration: underline;
 }

@@ -5,8 +5,6 @@ import './style.css';
 
 function Item(props) {
 
-  console.log('user', props.user)
-
   const callbacks = {
     onAdd: (e) => props.onAdd(props.item.id),
     onOpen: () => props.onOpen()
