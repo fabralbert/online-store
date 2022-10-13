@@ -33,7 +33,7 @@ function Basket() {
     itemBasket: useCallback(item => (
       <ItemBasket
         item={item}
-        link={`/articles/${item._id}`}
+        link={`/articles/${item.id}`}
         onLink={callbacks.closeModal}
         onRemove={callbacks.onRemove}
       />
