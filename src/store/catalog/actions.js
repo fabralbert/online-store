@@ -1,14 +1,15 @@
-import { dataItems } from '../../dataToFetch/MyFetchItems' // симуляция сервера с товарами
-
 const actionsCatalog = {
 
   load: () => {
     return async (dispatch) => {
+      dispatch({type: 'catalog/load'})
+
       try {
-        // тут должен быть запрос к серверу с помощью fetch
-        const json = await dataItems;
+        const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/dataItems');
+        const result = await response.json();
+
         // Товары упешно загружены
-        dispatch({type: 'catalog/load-success', payload: {data: json}});
+        dispatch({type: 'catalog/load-success', payload: {data: result}});
       } catch (e){
         // Ошибка при загрузке
         dispatch({type: 'catalog/load-error'});

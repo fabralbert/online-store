@@ -1,13 +1,15 @@
-import { dataItems } from '../../dataToFetch/MyFetchItems' // симуляция сервера с товарами
-
 const actionsArticle =  {
 
   load: (id) => {
     return async(dispatch, getState) => {
+      dispatch({type: 'article/load'})
+      
       try {
-        const json = await dataItems.find((item) => item.id === parseInt(id));
+        const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/dataItems');
+        const result = await response.json();
+        const data = result.find((item) => item.id === parseInt(id));
 
-        dispatch({type: 'article/load-success', payload: {data: json}});
+        dispatch({type: 'article/load-success', payload: {data}});
 
       } catch (e){
         

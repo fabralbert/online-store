@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsArticle from "../../store/article/actions";
 import actionsModals from "../../store/modals/actions";
+import Loader from "../../components/loader";
 
 function Article(){
   
@@ -22,6 +23,7 @@ function Article(){
 
   const select = useSelector(state => ({
     article: state.article.data,
+    isLoading: state.article.isLoading,
     user: state.login.user
   }));
 
@@ -40,11 +42,20 @@ function Article(){
     onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
     // сохранение новых данных
     onSave: useCallback((data) => {
-      console.log('data', data)
       dispatch(actionsArticle.editArticle(data));
       setIsEdit(!isEdit);
     }, [isEdit]),
   };
+  
+  if (select.isLoading) {
+  return (
+    <Layout head={<h1>Товар:</h1>}>
+      <TopContainer/>
+      <ToolsContainer/>
+      <Loader/>
+    </Layout>
+    )
+  }
 
   return (
     <Layout head={<h1>Товар:</h1>}>

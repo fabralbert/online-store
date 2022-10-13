@@ -4,6 +4,7 @@ import Item from "../../components/item";
 import { useDispatch, useSelector } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsModals from "../../store/modals/actions";
+import Loader from "../../components/loader";
 
 function CatalogList() {
 
@@ -11,6 +12,7 @@ function CatalogList() {
 
   const select = useSelector(state => ({
     items: state.catalog.items,
+    isLoading: state.catalog.isLoading,
     user: state.login.user,
   }));
 
@@ -30,6 +32,8 @@ function CatalogList() {
   }
 
   return (
+    select.isLoading ?
+    <Loader/> :
     <List items={select.items} renderItem={renders.item}/>
   );
 }

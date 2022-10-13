@@ -14,7 +14,6 @@ function ArticleCardEdit(props) {
     onSave: (e) => {
       e.preventDefault();
       for (let itemData in data){
-        console.log(itemData)
         callbacks.validation(itemData)
       }
 
@@ -42,8 +41,7 @@ function ArticleCardEdit(props) {
     },
 
     validation: (name) => {
-      console.log('validation', name)
-      if (!data[name].trim()) {
+      if (!data[name].toString().trim()) {
         setDataError(prevData => ({...prevData, [name]: 'Поле пустое. Заполните пожалуйста.'}))
         return
       }
@@ -59,7 +57,6 @@ function ArticleCardEdit(props) {
           break;
         }
         case 'price': {
-          console.log('вход')
           if (counterLimitData[name] <= 30){
             setDataError(prevData => ({...prevData, [name]: ''}))
             return;
