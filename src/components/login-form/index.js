@@ -69,7 +69,7 @@ function LoginForm(props) {
         setIsValidPassed(true)
       }
       // вход
-      props.onLogin({login: data.login, password: data.password})
+      props.onLogin({username: data.login, password: data.password})
     },
 
     // для смены состояния инпутов

@@ -5,11 +5,11 @@ import ArticleCardEdit from "../../components/article-card-edit";
 import Layout from "../../components/layouts/layout";
 import ToolsContainer from "../../containers/tools"
 import TopContainer from "../../containers/top";
+import Loader from "../../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsArticle from "../../store/article/actions";
 import actionsModals from "../../store/modals/actions";
-import Loader from "../../components/loader";
 
 function Article(){
   
@@ -47,6 +47,7 @@ function Article(){
     }, [isEdit]),
   };
   
+  // если данные пока не загрузились, то отрисовываем loader
   if (select.isLoading) {
   return (
     <Layout head={<h1>Товар:</h1>}>

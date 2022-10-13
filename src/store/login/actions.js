@@ -1,18 +1,29 @@
-import { MyFetch } from '../../dataToFetch/MyFetchUsers' // симуляция сервера
-
 const actionsLogin = {
 
   signIn: (data) => {
     return async (dispatch) => {
       try {
         // тут должен быть запрос к серверу с помощью fetch
-        const json = await MyFetch(data)
+        const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/users');
+        const users = await response.json();
 
-        if (json.error) {
-          dispatch({type: 'login/login-error', payload: {error: json.error}});
+        let dataUsers = {};
+        for (let user in users) {
+          if (users[user].username === data.username && users[user].password === parseInt(data.password)){
+            dataUsers.username = users[user].username;
+            break;
+          }
+        }
+
+        if (!dataUsers.username){
+          dataUsers.error = 'Неправильный логин или пароль'
+        }
+
+        if (dataUsers.error) {
+          dispatch({type: 'login/login-error', payload: {error: dataUsers.error}});
         } else {
           // Товары упешно загружены
-          dispatch({type: 'login/login-success', payload: {user: json.name}});
+          dispatch({type: 'login/login-success', payload: {user: dataUsers.username}});
         }
       } catch (e){
         // Ошибка при загрузке
