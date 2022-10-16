@@ -1,0 +1,77 @@
+.ArticleCardEdit {
+    font-size: 20px;
+    padding: 20px 35px;
+
+}
+
+.ArticleCardEdit-content{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.ArticleCardEdit-left{
+
+}
+
+.ArticleCardEdit-right{
+    min-width: 600px;
+}
+
+.ArticleCardEdit-description {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.ArticleCardEdit-prop {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.ArticleCardEdit-label{
+    padding: 10px 0;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.ArticleCardEdit-value{
+    font-size: 20px;
+    width: 100%;
+}
+
+.ArticleCardEdit img{
+    padding-top: 10px;
+    width: 300px;
+}
+
+.ArticleCardEdit-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ArticleCardEdit-btnAdd{
+    font-size: 24px;
+}
+
+.ArticleCardEdit-btnEdit{
+    text-align: center;
+    font-size: 24px;
+}
+
+.ArticleCardEdit-warning{
+    color: rgb(19, 19, 168);
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ArticleCardEdit-warning:hover{
+    text-decoration: underline;
+}
+
+.ArticleCardEdit-error{
+    color: red;
+    font-size: 20px;
+}

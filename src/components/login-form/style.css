@@ -1,0 +1,44 @@
+.LoginForm{
+  padding: 20px 0;
+}
+
+.LoginForm-title{
+  color: #fff;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.LoginForm-loginError{
+  font-size: 20px;
+  text-align: center;
+  color: red;
+}
+
+.LoginForm-buttons{
+  display: flex;
+  justify-content: center;
+}
+
+.LoginForm-cancelBtn{
+  margin: 10px 0 10px;
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background-color: rgb(248, 242, 239);
+  cursor: pointer;
+}
+
+.LoginForm-saveBtn{
+  margin: 10px 0 10px 30px;
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background-color: rgb(248, 242, 239);
+  cursor: pointer;
+}
+

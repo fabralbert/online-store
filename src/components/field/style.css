@@ -1,0 +1,22 @@
+.Field {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Field-label {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.Field-input {
+
+}
+
+.Field-error {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #f00;
+}

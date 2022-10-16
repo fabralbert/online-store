@@ -1,0 +1,76 @@
+/* Пункт списка */
+.Item {
+    width: 300px;
+    background-color: #FFF;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 0 5px 10px rgb(0 0 0 / 10%);
+    margin-bottom: 15px;
+}
+
+.Item-head img{
+    padding-top: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 320px;
+}
+
+.Item-prop{
+    text-align: center;
+}
+
+.Item-label{
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.Item-title {
+    padding: 5px;
+    font-size: 24px;
+    color: #000;
+}
+
+.Item-title a{
+    color: #000;
+    text-decoration: none;
+}
+
+.Item-title a:hover{
+    color: #000;
+    text-decoration: underline;
+}
+
+.Item-price {
+    padding: 5px;
+    font-size: 24px;
+    color: #000;
+}
+
+.Item-footer{
+    padding: 20px;
+}
+
+.Item-btn{
+    font-size: 24px;
+    height: 50px;
+    width: 120px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.Item-warning{
+    color: rgb(19, 19, 168);
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Item-warning:hover{
+    text-decoration: underline;
+}
