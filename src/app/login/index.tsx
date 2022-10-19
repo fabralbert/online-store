@@ -6,6 +6,7 @@ import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../hooks/useTypesSelector"
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 interface Data { 
   username: string;
@@ -14,7 +15,7 @@ interface Data {
 
 function Login() {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const select = useAppSelector(state => ({
     user: state.login.user,

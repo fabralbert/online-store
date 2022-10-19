@@ -6,29 +6,29 @@ import Layout from "../../components/layouts/layout";
 import ToolsContainer from "../../containers/tools"
 import TopContainer from "../../containers/top";
 import Loader from "../../components/loader";
-import { useDispatch } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsArticle from "../../store/article/actions";
 import actionsModals from "../../store/modals/actions";
 import { useAppSelector } from "../../hooks/useTypesSelector"
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 interface Data {
-  id: number;
-  title: string;
-  price: number;
-  img: string;
-  description: string;
   countLeft: number;
+  description: string;
+  price: number;
+  title: string;
 }
 
 function Article(){
-  
+
   const params = useParams();
   
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(actionsArticle.load(params.id));
+    if (params.id) {
+      dispatch(actionsArticle.load(params.id))
+    };
    }, [params.id]);
 
   const select = useAppSelector(state => ({
@@ -51,7 +51,7 @@ function Article(){
     // отмена редактирования
     onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
     // сохранение новых данных
-    onSave: useCallback((data: any) => { //@todo any
+    onSave: useCallback((data: Data) => { //@todo any
       dispatch(actionsArticle.editArticle(data));
       setIsEdit(!isEdit);
     }, [isEdit]),

@@ -5,10 +5,11 @@ import LayoutFlex from "../../components/layouts/layout-flex";
 import actionsModals from "../../store/modals/actions";
 import { useDispatch, useSelector } from "react-redux";
 import {RootState} from "../../store"
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 function ToolsContainer() {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const select = useSelector((state: RootState) => ({
     items: state.basket.items,

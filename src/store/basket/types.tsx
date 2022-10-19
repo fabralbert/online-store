@@ -29,7 +29,7 @@ interface ItemBasket {
 }
 
 interface Payload {
-  items: ItemBasket[]; // ИСПРАВИТЬ ПОСМОТРЕТЬ НА ТОМ ПРОЕКТЕ ЧТО КОНКРЕТНО В ПЕЙЛЛОАД ПРИХОДИТ
+  items: ItemBasket[];
   sum: number;
   totalAmount: number;
 }

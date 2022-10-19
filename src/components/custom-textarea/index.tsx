@@ -10,7 +10,7 @@ interface CustomTextAreaProps {
   countLimit: number;
   error?: string;
   rows: number;
-  onCancel?: () => void;
+  onCancel: () => void;
   onChange: (value: string, name: string) => void;
 }
 

@@ -1,12 +1,18 @@
 import { Dispatch } from "redux";
-import { RootState } from "..";
 
 import { ArticleAction, ArticleActionTypes } from "./types";
+
+interface Data {
+  countLeft: number;
+  description: string;
+  price: number;
+  title: string;
+}
 
 const actionsArticle =  {
 
   load: (id: string) => {
-    return async(dispatch: Dispatch<ArticleAction>, getState:() => RootState) => {
+    return async(dispatch: Dispatch<ArticleAction>) => {
       dispatch({type: ArticleActionTypes.ARTICLE_LOAD})
       
       try {
@@ -23,7 +29,7 @@ const actionsArticle =  {
     }
   },
 
-  editArticle: (data: string) => {
+  editArticle: (data: Data) => {
     return {type: ArticleActionTypes.ARTICLE_EDIT, payload: {data}}
   },
 }

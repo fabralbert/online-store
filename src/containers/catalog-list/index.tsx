@@ -6,6 +6,7 @@ import actionsBasket from "../../store/basket/actions";
 import actionsModals from "../../store/modals/actions";
 import Loader from "../../components/loader";
 import {RootState} from "../../store"
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 interface Item {
@@ -19,7 +20,7 @@ interface Item {
 
 function CatalogList() {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const select = useSelector((state: RootState) => ({
     items: state.catalog.items,

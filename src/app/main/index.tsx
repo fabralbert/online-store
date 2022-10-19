@@ -5,10 +5,11 @@ import ToolsContainer from "../../containers/tools"
 import TopContainer from "../../containers/top";
 import { useDispatch } from "react-redux";
 import actionsCatalog from "../../store/catalog/actions";
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 function Main() {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
    dispatch(actionsCatalog.load());

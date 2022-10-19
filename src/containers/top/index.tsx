@@ -5,6 +5,7 @@ import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
 import { useDispatch, useSelector } from "react-redux";
 import {RootState} from "../../store"
+import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 function TopContainer() {
 
@@ -12,7 +13,7 @@ function TopContainer() {
     user: state.login.user,
   }));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const callbacks = {
     // Открытие корзины
