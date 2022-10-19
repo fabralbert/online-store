@@ -41,7 +41,9 @@ function Article(){
 
   const callbacks = {
     // добавление товара в корзину
-    onAdd: useCallback((id: string) => dispatch(actionsBasket.addToBasket(id)), []),
+    onAdd: useCallback((id: string) => {
+      dispatch(actionsBasket.addToBasket(id))
+    }, []),
     // открытие модалки логина
     openModalLogin: useCallback(() => {
       dispatch(actionsModals.open('login'));
@@ -51,7 +53,7 @@ function Article(){
     // отмена редактирования
     onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
     // сохранение новых данных
-    onSave: useCallback((data: Data) => { //@todo any
+    onSave: useCallback((data: Data) => { 
       dispatch(actionsArticle.editArticle(data));
       setIsEdit(!isEdit);
     }, [isEdit]),
@@ -73,7 +75,7 @@ function Article(){
       <TopContainer/>
       <ToolsContainer/>
       {isEdit ? 
-      <ArticleCardEdit article={select.article} onAdd={callbacks.onAdd} user={select.user} onOpen={callbacks.openModalLogin} onSave={callbacks.onSave} onCancel={callbacks.onCancel}/> : 
+      <ArticleCardEdit article={select.article} onSave={callbacks.onSave} onCancel={callbacks.onCancel}/> : 
       <ArticleCard article={select.article} onAdd={callbacks.onAdd} user={select.user} onOpen={callbacks.openModalLogin} onEdit={callbacks.onEdit}/> 
       }
     </Layout>

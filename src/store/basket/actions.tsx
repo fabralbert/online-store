@@ -3,18 +3,15 @@ import { RootState } from "..";
 
 import { BasketAction, BasketActionTypes } from "./types";
 
-//@todo thunkDispatch
-
 const actionsBasket = {
 
   addToBasket: (id: string) => {
-    return async(dispatch: Dispatch<BasketAction>, getState: () => RootState) => {
+    return async(dispatch: Dispatch, getState: () => RootState) => {
 
       let sum = 0;
       // Ищем товар в корзие, чтобы увеличить его количество. Заодно получаем новый массив items
       let exists = false;
       
-      // eslint-disable-next-line array-callback-return
       const items = getState().basket.items.map((item) => {
         
         let result = item;

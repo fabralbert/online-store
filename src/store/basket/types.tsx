@@ -4,7 +4,7 @@ export enum BasketActionTypes {
   BASKET_CLEAR = 'BASKET/CLEAR',
 }
 
-export interface BasketAddAction {
+interface BasketAddAction {
   type: BasketActionTypes.BASKET_ADD;
   payload: Payload;
 }
@@ -18,13 +18,13 @@ interface BasketClearAction {
 }
 
 interface ItemBasket {
-  amount: number;
   description: string;
   id: string;
   img: string;
+  title: string;
   price: number;
   selfTotalSum: number;
-  title: string;
+  amount: number;
   countLeft: number;
 }
 

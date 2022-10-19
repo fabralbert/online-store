@@ -7,6 +7,15 @@ interface Data {
   description: string;
   price: number;
   title: string;
+  img: string;
+  id: string;
+}
+
+interface DataSave {
+  countLeft: number;
+  description: string;
+  price: number;
+  title: string;
 }
 
 const actionsArticle =  {
@@ -18,8 +27,8 @@ const actionsArticle =  {
       try {
         const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/dataItems');
         const result = await response.json();
-        const data = result.find((item: { id: string | boolean | number }) => item.id === id); //@todo было item: { id: string | boolean | number }
-
+        const data = result.find((item: Data) => item.id === id);
+        
         dispatch({type: ArticleActionTypes.ARTICLE_LOAD_SUCCESS, payload: {data}});
 
       } catch (e){
@@ -29,7 +38,7 @@ const actionsArticle =  {
     }
   },
 
-  editArticle: (data: Data) => {
+  editArticle: (data: DataSave) => {
     return {type: ArticleActionTypes.ARTICLE_EDIT, payload: {data}}
   },
 }

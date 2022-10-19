@@ -1,6 +1,6 @@
 
  interface Data {
-  id: number;
+  id: string;
   title: string;
   price: number;
   img: string;
@@ -40,6 +40,6 @@ interface ArticleEditAction {
 export type ArticleAction = ArticleLoadAction | ArticleLoadSuccessAction | ArticleLoadErrorAction | ArticleEditAction
 
 export interface ArticleState {
-  data: {}
+  data: Data
   isLoading: boolean;
 }

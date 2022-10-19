@@ -12,7 +12,7 @@ interface Article {
   description: string;
 }
 
-interface Data {
+interface DataSave {
   title: string;
   price: number;
   countLeft: number;
@@ -22,8 +22,7 @@ interface Data {
 interface ArticleCardEditProps {
   article: Article;
   onCancel: () => void;
-  onEdit: () => void;
-  onSave: (data: Data) => void;
+  onSave: (data: DataSave) => void;
 }
 
 function ArticleCardEdit(props: ArticleCardEditProps) {
