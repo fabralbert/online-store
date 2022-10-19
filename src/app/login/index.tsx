@@ -28,7 +28,7 @@ function Login() {
       dispatch(actionsModals.close());
     }, []),
     // Логин
-    onLogin: useCallback((data) => {
+    onLogin: useCallback((data: Data) => {
       dispatch(actionsLogin.signIn(data));
     }, []),
   };

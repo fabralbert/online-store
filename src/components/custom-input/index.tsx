@@ -4,11 +4,11 @@ import './style.css';
 interface CustomInputProps {
   type: string;
   name: string;
-  value: string | number;
+  value: string | number | undefined;
   placeholder?: string;
   width: number;
-  totalCount?: number | undefined;
-  countLimit?: number | undefined;
+  totalCount?: number | string | undefined;
+  countLimit?: number | string |  undefined;
   error?: string;
   isCount?: boolean;
   onCancel?: () => void;

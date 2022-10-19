@@ -6,13 +6,27 @@ import ListBasket from "../../components/list-basket";
 import { useDispatch, useSelector } from "react-redux";
 import actionsModals from "../../store/modals/actions";
 import actionsBasket from "../../store/basket/actions";
-import {RootState} from "../../store"
+import { RootState } from "../../store"
+import { useAppSelector } from "../../hooks/useTypesSelector"
+import { useAppDispatch } from "../../hooks/useTypesDispatch"
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+interface ItemBasket {
+  id: string;
+  img: string;
+  title: string;
+  price: number;
+  countLeft: number;
+  description: string;
+  amount: number;
+  selfTotalSum: number;
+}
 
 function Basket() {
 
   const dispatch = useDispatch();
 
-  const select = useSelector((state: RootState) => ({
+  const select = useAppSelector((state: RootState) => ({
     items: state.basket.items,
     sum: state.basket.sum,
   }));
@@ -31,7 +45,7 @@ function Basket() {
   };
 
   const renders = {
-    itemBasket: useCallback(item => (
+    itemBasket: useCallback((item: ItemBasket) => (
       <ItemBasket
         item={item}
         link={`/articles/${item.id}`}
@@ -44,7 +58,7 @@ function Basket() {
   return (
     <LayoutModal title={'Корзина'} onClose={callbacks.closeModal}>
       <ListBasket items={select.items} renderItem={renders.itemBasket}/>
-      <BasketTotal totalAmount={select.totalAmount} sum={select.sum} onClear={callbacks.onClear}/>
+      <BasketTotal sum={select.sum} onClear={callbacks.onClear}/>
     </LayoutModal>
   )
 }

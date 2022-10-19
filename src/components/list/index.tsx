@@ -9,14 +9,12 @@ interface Item {
   price: number;
   countLeft: number;
   description: string;
-  amount?: number;
-  selfTotalSum?: number;
 }
 
 
 interface ListProps {
   items: Item[];
-  renderItem: (item: Item) => React.ReactElement;
+  renderItem: (item: Item) => React.ReactNode;
 }
 
 

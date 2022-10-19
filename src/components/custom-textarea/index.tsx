@@ -3,7 +3,7 @@ import './style.css';
 
 interface CustomTextAreaProps {
   name: string;
-  value: string;
+  value: string | undefined;
   placeholder?: string;
   width: number;
   totalCount: number;

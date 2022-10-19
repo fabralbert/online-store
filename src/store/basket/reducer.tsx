@@ -4,15 +4,19 @@ import {
   BASKET_CLEAR,
 } from "../constants";
 
-interface Item { 
-  id: string; 
-  amount: number; 
-  price: number; 
+interface ItemBasket {
+  id: string;
+  img: string;
+  title: string;
+  price: number;
+  countLeft: number;
+  description: string;
+  amount: number;
   selfTotalSum: number;
 }
 
 interface Payload {
-  items: Array<Item>;
+  items: Array<ItemBasket>;
   sum: number;
   totalAmount: number;
 }
@@ -23,7 +27,7 @@ interface Action {
 }
 
 const initialState = {
-  items: [] as Array<Item>,
+  items: [] as Array<ItemBasket>,
   sum: 0,
   totalAmount: 0,
 }

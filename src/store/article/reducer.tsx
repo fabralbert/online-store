@@ -1,3 +1,5 @@
+import { ArticleAction, ArticleState, ArticleActionTypes } from "./types";
+
 // Начальное состояние товара
 import { 
   ARTICLE_LOAD, 
@@ -6,42 +8,25 @@ import {
   ARTICLE_EDIT 
 } from "../constants";
 
-interface Data {
-  id: number;
-  title: string;
-  price: number;
-  img: string;
-  description: string;
-  countLeft: number;
-}
 
-interface Payload {
-  data: Data
-}
-
-interface Action {
-    type: string;
-    payload: Payload;
-}
-
-const initialState = {
+const initialState: ArticleState = {
   data: {},
   isLoading: false,
 }
 
-function article(state = initialState, action: Action){
+function article(state = initialState, action: ArticleAction): ArticleState{
   switch (action.type) {
-
-    case ARTICLE_LOAD:
+    
+    case ArticleActionTypes.ARTICLE_LOAD:
       return { ...state, data: {}, isLoading: true};
 
-    case ARTICLE_LOAD_SUCCESS:
+    case ArticleActionTypes.ARTICLE_LOAD_SUCCESS:
       return { ...state, data: action.payload.data, isLoading: false};
 
-    case ARTICLE_LOAD_ERROR:
+    case ArticleActionTypes.ARTICLE_LOAD_ERROR:
       return { ...state, data: {}, isLoading: false};
 
-    case ARTICLE_EDIT:
+    case ArticleActionTypes.ARTICLE_EDIT:
       return { ...state, data: {...state.data, ...action.payload.data}};
 
     default:

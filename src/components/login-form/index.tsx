@@ -7,7 +7,7 @@ import './style.css';
 
 interface Data {
   username: string;
-  password: string | number;
+  password: string;
 }
 
 interface LoginFormProps {

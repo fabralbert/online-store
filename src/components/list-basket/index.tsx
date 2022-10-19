@@ -1,20 +1,20 @@
 import React from 'react';
 import './style.css';
 
-interface Item {
-  id?: string;
-  img?: string;
-  title?: string;
-  price?: number;
-  countLeft?: number;
-  description?: string;
-  amount?: number;
-  selfTotalSum?: number;
+interface BasketItem {
+  id: string;
+  img: string;
+  title: string;
+  price: number;
+  countLeft: number;
+  description: string;
+  amount: number;
+  selfTotalSum: number;
 }
 
 interface ListBasketProps {
-  items: Item[];
-  renderItem: (item: Item) => React.ReactNode;
+  items: BasketItem[];
+  renderItem: (item: BasketItem) => React.ReactNode;
 }
 
 function ListBasket(props: ListBasketProps) {

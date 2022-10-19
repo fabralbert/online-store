@@ -15,7 +15,6 @@ interface Item {
 }
 
 interface ItemBasketProps {
-  user: string;
   link: string;
   item: Item;
   onRemove: (id: string) => void;

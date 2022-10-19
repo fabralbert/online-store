@@ -11,6 +11,17 @@ import actionsBasket from "../../store/basket/actions";
 import actionsArticle from "../../store/article/actions";
 import actionsModals from "../../store/modals/actions";
 import {RootState} from "../../store"
+import { useAppSelector } from "../../hooks/useTypesSelector"
+import { useAppDispatch } from "../../hooks/useTypesDispatch"
+
+interface Data {
+  id: number;
+  title: string;
+  price: number;
+  img: string;
+  description: string;
+  countLeft: number;
+}
 
 function Article(){
   
@@ -42,7 +53,9 @@ function Article(){
     // отмена редактирования
     onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
     // сохранение новых данных
-    onSave: useCallback((data) => {
+
+    //@todo any
+    onSave: useCallback((data: any) => {
       dispatch(actionsArticle.editArticle(data));
       setIsEdit(!isEdit);
     }, [isEdit]),

@@ -6,7 +6,7 @@ import EmptyPage from './empty-page';
 import Article from './article';
 import Login from './login';
 import Basket from './basket';
-import {useSelector} from 'react-redux'
+import {useAppSelector} from '../hooks/useTypesSelector' 
 
 /**
  * Приложение
@@ -14,7 +14,7 @@ import {useSelector} from 'react-redux'
  */
 function App() {
 
-  const modal = useSelector(state => state.modals.name);
+  const modal = useAppSelector(state => state.modals.name); //@TODO
 
   return (
     <>
