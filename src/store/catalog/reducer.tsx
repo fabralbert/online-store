@@ -1,41 +1,19 @@
-import { 
-  CATALOG_LOAD, 
-  CATALOG_LOAD_SUCCESS, 
-  CATALOG_LOAD_ERROR,
-} from "../constants";
+import {CatalogActionTypes, CatalogAction, CatalogState} from "./types"
 
-interface Item {
-  id: string;
-  title: string;
-  price: number;
-  img: string;
-  description: string;
-  countLeft: number;
-}
-
-interface Payload {
-  data: Array<Item>        // @todo
-}
-
-interface Action {
-    type: string;
-    payload: Payload;
-}
-
-const initialState = {
-  items: [] as Array<Item>,
+const initialState: CatalogState = {
+  items: [],
   isLoading: false,
 }
 
-function catalogReducer(state = initialState, action: Action){
+function catalogReducer(state = initialState, action: CatalogAction): CatalogState{
   switch (action.type) {
-    case CATALOG_LOAD:
+    case CatalogActionTypes.CATALOG_LOAD:
       return { ...state, items: [], isLoading: true};
 
-    case CATALOG_LOAD_SUCCESS:
+    case CatalogActionTypes.CATALOG_LOAD_SUCCESS:
       return { ...state, items: action.payload.data, isLoading: false};
 
-    case CATALOG_LOAD_ERROR:
+    case CatalogActionTypes.CATALOG_LOAD_ERROR:
       return { ...state, items: [], isLoading: false};
 
     default:

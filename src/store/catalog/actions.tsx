@@ -1,25 +1,22 @@
 import { Dispatch } from "redux";
-import { 
-  CATALOG_LOAD, 
-  CATALOG_LOAD_SUCCESS, 
-  CATALOG_LOAD_ERROR,
-} from "../constants";
+
+import {CatalogActionTypes, CatalogAction} from "./types"
 
 const actionsCatalog = {
 
   load: () => {
-    return async (dispatch: Dispatch) => {
-      dispatch({type: CATALOG_LOAD})
+    return async (dispatch: Dispatch<CatalogAction>) => {
+      dispatch({type: CatalogActionTypes.CATALOG_LOAD})
 
       try {
         const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/dataItems');
         const result = await response.json();
 
         // Товары упешно загружены
-        dispatch({type: CATALOG_LOAD_SUCCESS, payload: {data: result}});
+        dispatch({type: CatalogActionTypes.CATALOG_LOAD_SUCCESS, payload: {data: result}});
       } catch (e){
         // Ошибка при загрузке
-        dispatch({type: CATALOG_LOAD_ERROR});
+        dispatch({type: CatalogActionTypes.CATALOG_LOAD_ERROR});
       }
     }
   },

@@ -1,48 +1,22 @@
-import { 
-  BASKET_ADD, 
-  BASKET_REMOVE, 
-  BASKET_CLEAR,
-} from "../constants";
+import {BasketAction, BasketState, BasketActionTypes } from "./types";
 
-interface ItemBasket {
-  id: string;
-  img: string;
-  title: string;
-  price: number;
-  countLeft: number;
-  description: string;
-  amount: number;
-  selfTotalSum: number;
-}
-
-interface Payload {
-  items: Array<ItemBasket>;
-  sum: number;
-  totalAmount: number;
-}
-
-interface Action {
-  type: string;
-  payload: Payload;
-}
-
-const initialState = {
-  items: [] as Array<ItemBasket>,
+const initialState: BasketState = {
+  items: [], //@todo было items: [] as Array<ItemBasket>
   sum: 0,
   totalAmount: 0,
 }
 
- function basketReducer(state = initialState, action: Action){
+ function basketReducer(state = initialState, action: BasketAction): BasketState{
   switch (action.type) {
 
-    case BASKET_ADD:
+    case BasketActionTypes.BASKET_ADD:
       return { 
         ...state, 
         items: action.payload.items, 
         sum: action.payload.sum, 
         totalAmount: action.payload.totalAmount,
       };
-    case BASKET_REMOVE:
+    case BasketActionTypes.BASKET_REMOVE:
       return { 
         ...state, 
         items: action.payload.items, 
@@ -50,7 +24,7 @@ const initialState = {
         totalAmount: action.payload.totalAmount,
       };
 
-    case BASKET_CLEAR:
+    case BasketActionTypes.BASKET_CLEAR:
       return { 
         ...state, 
         items: [], 

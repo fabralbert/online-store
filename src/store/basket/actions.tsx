@@ -1,23 +1,20 @@
 import { Dispatch } from "redux";
-import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from "..";
-import { 
-  BASKET_ADD, 
-  BASKET_REMOVE, 
-  BASKET_CLEAR,
-} from "../constants";
+
+import { BasketAction, BasketActionTypes } from "./types";
 
 //@todo thunkDispatch
 
 const actionsBasket = {
 
   addToBasket: (id: string) => {
-    return async(dispatch: Dispatch, getState: () => RootState) => {
+    return async(dispatch: Dispatch<BasketAction>, getState: () => RootState) => {
 
       let sum = 0;
       // Ищем товар в корзие, чтобы увеличить его количество. Заодно получаем новый массив items
       let exists = false;
       
+      // eslint-disable-next-line array-callback-return
       const items = getState().basket.items.map((item) => {
         
         let result = item;
@@ -47,12 +44,12 @@ const actionsBasket = {
         sum += item.price;
       }
 
-      dispatch({type: BASKET_ADD, payload: {items, sum, totalAmount: items.length}});
+      dispatch({type: BasketActionTypes.BASKET_ADD, payload: {items, sum, totalAmount: items.length}});
     }
   },
 
   removeFromBasket: (id: string) => {
-      return (dispatch: Dispatch, getState: () => RootState) => {
+      return (dispatch: Dispatch<BasketAction>, getState: () => RootState) => {
       const item = getState().basket.items.find((item) => item.id === id)
 
       let items;
@@ -79,11 +76,11 @@ const actionsBasket = {
         return item.amount * item.price + acc
       }, 0)
 
-      dispatch({type: BASKET_REMOVE, payload: {items, sum, totalAmount: items.length}});
+      dispatch({type: BasketActionTypes.BASKET_REMOVE, payload: {items, sum, totalAmount: items.length}});
     }
   },
   clearBasket: () => {
-    return {type: BASKET_CLEAR}
+    return {type: BasketActionTypes.BASKET_CLEAR}
   }
 }
 

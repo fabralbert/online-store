@@ -1,27 +1,15 @@
-import { 
-  MODAL_OPEN, 
-  MODAL_CLOSE, 
-} from "../constants";
+import {ModalActionTypes, ModalAction, ModalState} from "./types"
 
 // Начальное состояние для управления модалками
-const initialState = {
+const initialState: ModalState = {
   name: ''
 }
 
-interface Payload {
-  name: string;
-}
-
-interface Action {
-    type: string;
-    payload: Payload;
-}
-
-function modalReducer(state = initialState, action: Action){
+function modalReducer(state = initialState, action: ModalAction): ModalState{
   switch (action.type) {
-    case MODAL_OPEN:
+    case ModalActionTypes.MODAL_OPEN:
       return { ...state, name: action.payload.name};
-    case MODAL_CLOSE:
+    case ModalActionTypes.MODAL_CLOSE:
       return { ...state, name: null };
     default:
       return state;

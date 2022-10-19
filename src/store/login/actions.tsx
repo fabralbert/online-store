@@ -1,9 +1,6 @@
 import { Dispatch } from "redux";
-import { 
-  LOGIN_LOGIN_ERROR, 
-  LOGIN_LOGIN_SUCCESS, 
-  LOGIN_UNLOGIN,
-} from "../constants";
+
+import {LoginActionTypes, LoginAction} from "./types"
 
 interface Data { 
   username: string;
@@ -13,7 +10,7 @@ interface Data {
 const actionsLogin = {
 
   signIn: (data: Data) => {
-    return async (dispatch: Dispatch) => {
+    return async (dispatch: Dispatch<LoginAction>) => {
       try {
         // тут должен быть запрос к серверу с помощью fetch
         const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/users');
@@ -37,10 +34,10 @@ const actionsLogin = {
         }
 
         if (dataUsers.error) {
-          dispatch({type: LOGIN_LOGIN_ERROR, payload: {error: dataUsers.error}});
+          dispatch({type: LoginActionTypes.LOGIN_LOGIN_ERROR, payload: {error: dataUsers.error, user: ''}});
         } else {
           // Товары упешно загружены
-          dispatch({type: LOGIN_LOGIN_SUCCESS, payload: {user: dataUsers.username}});
+          dispatch({type: LoginActionTypes.LOGIN_LOGIN_SUCCESS, payload: {user: dataUsers.username, error: ''}});
         }
       } catch (e){
         // Ошибка при загрузке
@@ -50,7 +47,7 @@ const actionsLogin = {
   },
   
   signOut: () => {
-    return {type: LOGIN_UNLOGIN}
+    return {type: LoginActionTypes.LOGIN_UNLOGIN}
   }
 }
 

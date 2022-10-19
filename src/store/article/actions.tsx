@@ -1,34 +1,30 @@
 import { Dispatch } from "redux";
 import { RootState } from "..";
-import { 
-  ARTICLE_LOAD, 
-  ARTICLE_LOAD_SUCCESS, 
-  ARTICLE_LOAD_ERROR, 
-  ARTICLE_EDIT 
-} from "../constants";
+
+import { ArticleAction, ArticleActionTypes } from "./types";
 
 const actionsArticle =  {
 
   load: (id: string) => {
-    return async(dispatch: Dispatch, getState:() => RootState) => {
-      dispatch({type: ARTICLE_LOAD})
+    return async(dispatch: Dispatch<ArticleAction>, getState:() => RootState) => {
+      dispatch({type: ArticleActionTypes.ARTICLE_LOAD})
       
       try {
         const response = await fetch('https://my-json-server.typicode.com/fabralbert/demo/dataItems');
         const result = await response.json();
-        const data = result.find((item: { id: string | boolean | number }) => item.id === id);
+        const data = result.find((item: { id: string | boolean | number }) => item.id === id); //@todo было item: { id: string | boolean | number }
 
-        dispatch({type: ARTICLE_LOAD_SUCCESS, payload: {data}});
+        dispatch({type: ArticleActionTypes.ARTICLE_LOAD_SUCCESS, payload: {data}});
 
       } catch (e){
         
-        dispatch({type: ARTICLE_LOAD_ERROR});
+        dispatch({type: ArticleActionTypes.ARTICLE_LOAD_ERROR});
       }
     }
   },
 
   editArticle: (data: string) => {
-    return {type: ARTICLE_EDIT, payload: {data}}
+    return {type: ArticleActionTypes.ARTICLE_EDIT, payload: {data}}
   },
 }
 

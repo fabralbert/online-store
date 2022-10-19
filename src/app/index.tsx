@@ -6,16 +6,15 @@ import EmptyPage from './empty-page';
 import Article from './article';
 import Login from './login';
 import Basket from './basket';
-import {useAppSelector} from '../hooks/useTypesSelector' 
+import { useAppSelector } from "../hooks/useTypesSelector"
 
 /**
  * Приложение
  * @return {React.ReactElement} Виртуальные элементы React
  */
-function App() {
+function App(): React.ReactElement { //@TODO
 
   const modal = useAppSelector(state => state.modals.name); //@TODO
-
   return (
     <>
         <Routes>

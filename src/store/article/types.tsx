@@ -31,7 +31,6 @@ interface ArticleLoadSuccessAction {
 
 interface ArticleLoadErrorAction {
   type: ArticleActionTypes.ARTICLE_LOAD_ERROR;
-  payload: {};
 }
 interface ArticleEditAction {
   type: ArticleActionTypes.ARTICLE_EDIT;

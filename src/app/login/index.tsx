@@ -4,8 +4,8 @@ import FormQuestion from "../../components/login-form"
 import LayoutModal from "../../components/layouts/layout-modal";
 import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
-import { useDispatch, useSelector } from "react-redux";
-import {RootState} from "../../store"
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../hooks/useTypesSelector"
 
 interface Data { 
   username: string;
@@ -16,11 +16,10 @@ function Login() {
 
   const dispatch = useDispatch();
 
-  const select = useSelector((state: RootState) => ({
+  const select = useAppSelector(state => ({
     user: state.login.user,
     error: state.login.error,
   }));
-
 
   const callbacks = {
     // Закрытие любой модалки

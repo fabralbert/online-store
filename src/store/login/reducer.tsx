@@ -1,38 +1,19 @@
-import { 
-  LOGIN_LOGIN_ERROR, 
-  LOGIN_LOGIN_SUCCESS, 
-  LOGIN_UNLOGIN,
-} from "../constants";
+import {LoginActionTypes, LoginAction, LoginState} from "./types"
 
-interface Payload {
-  error: string;
-  user: string;
-}
-
-interface Action {
-  type: string;
-  payload: Payload;
-}
-
-interface loginState {
-  error: null | string;
-  user: string;
-}
-
-const initialState: loginState = {
+const initialState: LoginState = {
   user: '',
   error: null,
 }
 
-function loginReducer(state = initialState, action: Action){
+function loginReducer(state = initialState, action: LoginAction): LoginState{
   switch (action.type) {
-    case LOGIN_LOGIN_ERROR:
-      return { ...state, user: action.payload.user, error: null};
+    case LoginActionTypes.LOGIN_LOGIN_ERROR:
+      return { ...state, user: action.payload.user, error: action.payload.error};
 
-    case LOGIN_LOGIN_SUCCESS:
-      return { ...state, error: action.payload.error, user: ''};
+    case LoginActionTypes.LOGIN_LOGIN_SUCCESS:
+      return { ...state, error: action.payload.error, user: action.payload.user};
 
-    case LOGIN_UNLOGIN:
+    case LoginActionTypes.LOGIN_UNLOGIN:
       return { ...state, error: null, user: ''};
 
     default:

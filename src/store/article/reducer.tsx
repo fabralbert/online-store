@@ -1,14 +1,5 @@
 import { ArticleAction, ArticleState, ArticleActionTypes } from "./types";
 
-// Начальное состояние товара
-import { 
-  ARTICLE_LOAD, 
-  ARTICLE_LOAD_SUCCESS, 
-  ARTICLE_LOAD_ERROR, 
-  ARTICLE_EDIT 
-} from "../constants";
-
-
 const initialState: ArticleState = {
   data: {},
   isLoading: false,
