@@ -1,9 +1,14 @@
+import { 
+  MODAL_OPEN, 
+  MODAL_CLOSE, 
+} from "../constants";
+ 
  const actionsModals = {
   open: (name:string) => {
-    return {type: 'modal/open', payload: {name}};
+    return {type: MODAL_OPEN, payload: {name}};
   },
   close: () => {
-    return {type: 'modal/close'}
+    return {type: MODAL_CLOSE}
   }
 }
 

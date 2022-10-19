@@ -1,4 +1,9 @@
 import { Dispatch } from "redux";
+import { 
+  LOGIN_LOGIN_ERROR, 
+  LOGIN_LOGIN_SUCCESS, 
+  LOGIN_UNLOGIN,
+} from "../constants";
 
 interface Data { 
   username: string;
@@ -19,6 +24,7 @@ const actionsLogin = {
           password: '',
           error: '',
         };
+        
         for (let user in users) {
           if (users[user].username === data.username && users[user].password === parseInt(data.password)){
             dataUsers.username = users[user].username;
@@ -31,10 +37,10 @@ const actionsLogin = {
         }
 
         if (dataUsers.error) {
-          dispatch({type: 'login/login-error', payload: {error: dataUsers.error}});
+          dispatch({type: LOGIN_LOGIN_ERROR, payload: {error: dataUsers.error}});
         } else {
           // Товары упешно загружены
-          dispatch({type: 'login/login-success', payload: {user: dataUsers.username}});
+          dispatch({type: LOGIN_LOGIN_SUCCESS, payload: {user: dataUsers.username}});
         }
       } catch (e){
         // Ошибка при загрузке
@@ -44,7 +50,7 @@ const actionsLogin = {
   },
   
   signOut: () => {
-    return {type: 'login/unlogin'}
+    return {type: LOGIN_UNLOGIN}
   }
 }
 

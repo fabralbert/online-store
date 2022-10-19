@@ -6,12 +6,13 @@ import ListBasket from "../../components/list-basket";
 import { useDispatch, useSelector } from "react-redux";
 import actionsModals from "../../store/modals/actions";
 import actionsBasket from "../../store/basket/actions";
+import {RootState} from "../../store"
 
 function Basket() {
 
   const dispatch = useDispatch();
 
-  const select = useSelector(state => ({
+  const select = useSelector((state: RootState) => ({
     items: state.basket.items,
     sum: state.basket.sum,
   }));
@@ -21,7 +22,7 @@ function Basket() {
     closeModal: useCallback(() => {
       dispatch(actionsModals.close());
     }, []),
-    onRemove: useCallback((id) => {
+    onRemove: useCallback((id: string) => {
       dispatch(actionsBasket.removeFromBasket(id));
     }, []),
     onClear: useCallback(() => {

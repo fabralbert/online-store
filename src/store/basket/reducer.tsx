@@ -1,24 +1,29 @@
+import { 
+  BASKET_ADD, 
+  BASKET_REMOVE, 
+  BASKET_CLEAR,
+} from "../constants";
 
 interface Item { 
   id: string; 
-  amount?: number; 
+  amount: number; 
   price: number; 
   selfTotalSum: number;
 }
 
 interface Payload {
-  items: Item[];
+  items: Array<Item>;
   sum: number;
   totalAmount: number;
 }
 
 interface Action {
-    type: string;
-    payload: Payload;
+  type: string;
+  payload: Payload;
 }
 
 const initialState = {
-  items: [],
+  items: [] as Array<Item>,
   sum: 0,
   totalAmount: 0,
 }
@@ -26,14 +31,14 @@ const initialState = {
  function basketReducer(state = initialState, action: Action){
   switch (action.type) {
 
-    case "basket/add":
+    case BASKET_ADD:
       return { 
         ...state, 
         items: action.payload.items, 
         sum: action.payload.sum, 
         totalAmount: action.payload.totalAmount,
       };
-    case "basket/remove":
+    case BASKET_REMOVE:
       return { 
         ...state, 
         items: action.payload.items, 
@@ -41,7 +46,7 @@ const initialState = {
         totalAmount: action.payload.totalAmount,
       };
 
-    case "basket/clear":
+    case BASKET_CLEAR:
       return { 
         ...state, 
         items: [], 

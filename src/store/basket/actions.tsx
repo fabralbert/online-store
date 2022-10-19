@@ -1,14 +1,13 @@
 import { Dispatch } from "redux";
+import { ThunkDispatch } from 'redux-thunk'
 import { RootState } from "..";
+import { 
+  BASKET_ADD, 
+  BASKET_REMOVE, 
+  BASKET_CLEAR,
+} from "../constants";
 
-//@todo
-
-interface Item { 
-  id: string; 
-  amount: number; 
-  price: number; 
-  selfTotalSum: number;
-}
+//@todo thunkDispatch
 
 const actionsBasket = {
 
@@ -19,23 +18,25 @@ const actionsBasket = {
       // Ищем товар в корзие, чтобы увеличить его количество. Заодно получаем новый массив items
       let exists = false;
       
-      const items = getState().basket.items.map((item: Item) => {
+      const items = getState().basket.items.map((item) => {
         
         let result = item;
         // в случае если нашли наш товар
-        if (item.id === id) {
+        if (item.id === id && item.amount) {
           exists = true;
           result = {...item, amount: item.amount + 1, selfTotalSum: item.price + item.selfTotalSum};
         }
         // Добавляея в общую сумму
-        sum += result.price * result.amount;
-        return result
+        if (result.amount) {
+          sum += result.price * result.amount;
+          return result
+        }
       });
 
       // Если товар не был найден в корзине, то добавляем его из каталога
       if (!exists) {
         // Поиск товара в каталоге
-        const item = getState().catalog?.items.find((item: { id: string; }) => item.id === id);
+        const item = getState().catalog.items.find((item) => item.id === id);
         
         if (!item){
           return
@@ -46,22 +47,19 @@ const actionsBasket = {
         sum += item.price;
       }
 
-      dispatch({type: 'basket/add', payload: {items, sum, totalAmount: items.length}});
+      dispatch({type: BASKET_ADD, payload: {items, sum, totalAmount: items.length}});
     }
   },
 
   removeFromBasket: (id: string) => {
       return (dispatch: Dispatch, getState: () => RootState) => {
-      const item = getState().basket.items.find((item: { id: string }) => item.id === id)
+      const item = getState().basket.items.find((item) => item.id === id)
 
       let items;
 
-      if (!item){
-        return
-      }
       
-      if (item.amount > 1){
-        items = getState().basket.items.map((item: Item) => {
+      if (item && item.amount > 1){
+        items = getState().basket.items.map((item) => {
             if (item.id === id){
               return {...item, amount: item.amount - 1, selfTotalSum: item.selfTotalSum - item.price}
             }
@@ -70,22 +68,22 @@ const actionsBasket = {
         )
       }
       else {
-        const newItems = getState().basket.items.filter((item: { id: string; }) => item.id !== id)
+        const newItems = getState().basket.items.filter((item) => item.id !== id)
 
-        items = newItems.map((item: Item) => {
+        items = newItems.map((item) => {
           return {...item}
         })
       }
-
-      const sum = items.reduce((acc: number, item: Item) => {
+      
+      const sum = items.reduce((acc, item) => {
         return item.amount * item.price + acc
       }, 0)
 
-      dispatch({type: 'basket/remove', payload: {items, sum, totalAmount: items.length}});
+      dispatch({type: BASKET_REMOVE, payload: {items, sum, totalAmount: items.length}});
     }
   },
   clearBasket: () => {
-    return {type: 'basket/clear'}
+    return {type: BASKET_CLEAR}
   }
 }
 

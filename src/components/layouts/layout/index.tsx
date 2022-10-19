@@ -3,7 +3,7 @@ import './style.css';
 
 interface LayoutProps {
   children: React.ReactNode;
-  head: string;
+  head: React.ReactNode;
 }
 
 function Layout({children, head}: LayoutProps){

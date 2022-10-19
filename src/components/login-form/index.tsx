@@ -11,7 +11,7 @@ interface Data {
 }
 
 interface LoginFormProps {
-  errorLogin: string;
+  errorLogin: string | null;
   user: string,
   onClose: () => void;
   onLogin: (data: Data) => void;

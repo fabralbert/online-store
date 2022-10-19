@@ -1,4 +1,11 @@
 // Начальное состояние товара
+import { 
+  ARTICLE_LOAD, 
+  ARTICLE_LOAD_SUCCESS, 
+  ARTICLE_LOAD_ERROR, 
+  ARTICLE_EDIT 
+} from "../constants";
+
 interface Data {
   id: number;
   title: string;
@@ -25,16 +32,16 @@ const initialState = {
 function article(state = initialState, action: Action){
   switch (action.type) {
 
-    case "article/load":
+    case ARTICLE_LOAD:
       return { ...state, data: {}, isLoading: true};
 
-    case "article/load-success":
+    case ARTICLE_LOAD_SUCCESS:
       return { ...state, data: action.payload.data, isLoading: false};
 
-    case "article/load-error":
+    case ARTICLE_LOAD_ERROR:
       return { ...state, data: {}, isLoading: false};
 
-    case "article/edit":
+    case ARTICLE_EDIT:
       return { ...state, data: {...state.data, ...action.payload.data}};
 
     default:

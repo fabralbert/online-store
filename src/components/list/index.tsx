@@ -3,19 +3,20 @@ import React from 'react';
 import './style.css';
 
 interface Item {
-  id?: string;
-  img?: string;
-  title?: string;
-  price?: number;
-  countLeft?: number;
-  description?: string;
+  id: string;
+  img: string;
+  title: string;
+  price: number;
+  countLeft: number;
+  description: string;
   amount?: number;
   selfTotalSum?: number;
 }
 
+
 interface ListProps {
   items: Item[];
-  renderItem: (item: Item) => React.ReactNode;
+  renderItem: (item: Item) => React.ReactElement;
 }
 
 

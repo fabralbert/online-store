@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsArticle from "../../store/article/actions";
 import actionsModals from "../../store/modals/actions";
+import {RootState} from "../../store"
 
 function Article(){
   
@@ -21,7 +22,7 @@ function Article(){
     dispatch(actionsArticle.load(params.id));
    }, [params.id]);
 
-  const select = useSelector(state => ({
+  const select = useSelector((state: RootState) => ({
     article: state.article.data,
     isLoading: state.article.isLoading,
     user: state.login.user
@@ -31,7 +32,7 @@ function Article(){
 
   const callbacks = {
     // добавление товара в корзину
-    onAdd: useCallback((id) => dispatch(actionsBasket.addToBasket(id)), []),
+    onAdd: useCallback((id: string) => dispatch(actionsBasket.addToBasket(id)), []),
     // открытие модалки логина
     openModalLogin: useCallback(() => {
       dispatch(actionsModals.open('login'));

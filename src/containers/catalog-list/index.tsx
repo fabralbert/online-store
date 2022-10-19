@@ -5,12 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import actionsBasket from "../../store/basket/actions";
 import actionsModals from "../../store/modals/actions";
 import Loader from "../../components/loader";
+import {RootState} from "../../store"
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+interface Item {
+  id: string;
+  img: string;
+  title: string;
+  price: number;
+  countLeft: number;
+  description: string;
+}
 
 function CatalogList() {
 
   const dispatch = useDispatch();
 
-  const select = useSelector(state => ({
+  const select = useSelector((state: RootState) => ({
     items: state.catalog.items,
     isLoading: state.catalog.isLoading,
     user: state.login.user,
@@ -18,7 +29,7 @@ function CatalogList() {
 
   const callbacks = {
     // добавление товара в корзину
-    onAdd: useCallback((id) => dispatch(actionsBasket.addToBasket(id)), []),
+    onAdd: useCallback((id: string) => dispatch(actionsBasket.addToBasket(id)), []),
     // Открытие модалки логина
     openModalLogin: useCallback(() => {
       dispatch(actionsModals.open('login'));
@@ -26,7 +37,7 @@ function CatalogList() {
   };
 
   const renders = {
-    item: useCallback(item => (
+    item: useCallback((item: Item) => (
       <Item item={item} link={`/articles/${item.id}`} onAdd={callbacks.onAdd} user={select.user} onOpen={callbacks.openModalLogin}/>
     ), [select.user]),
   }

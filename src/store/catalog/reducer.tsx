@@ -1,6 +1,20 @@
+import { 
+  CATALOG_LOAD, 
+  CATALOG_LOAD_SUCCESS, 
+  CATALOG_LOAD_ERROR,
+} from "../constants";
+
+interface Item {
+  id: string;
+  title: string;
+  price: number;
+  img: string;
+  description: string;
+  countLeft: number;
+}
 
 interface Payload {
-  data: []         // @todo
+  data: Array<Item>        // @todo
 }
 
 interface Action {
@@ -9,19 +23,19 @@ interface Action {
 }
 
 const initialState = {
-  items: [],
+  items: [] as Array<Item>,
   isLoading: false,
 }
 
 function catalogReducer(state = initialState, action: Action){
   switch (action.type) {
-    case "catalog/load":
+    case CATALOG_LOAD:
       return { ...state, items: [], isLoading: true};
 
-    case "catalog/load-success":
+    case CATALOG_LOAD_SUCCESS:
       return { ...state, items: action.payload.data, isLoading: false};
 
-    case "catalog/load-error":
+    case CATALOG_LOAD_ERROR:
       return { ...state, items: [], isLoading: false};
 
     default:

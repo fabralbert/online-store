@@ -4,10 +4,11 @@ import LoginBtn from "../../components/login-btn"
 import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
 import { useDispatch, useSelector } from "react-redux";
+import {RootState} from "../../store"
 
 function TopContainer() {
 
-  const select = useSelector(state => ({
+  const select = useSelector((state: RootState) => ({
     user: state.login.user,
   }));
 

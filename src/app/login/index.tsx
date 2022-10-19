@@ -5,12 +5,18 @@ import LayoutModal from "../../components/layouts/layout-modal";
 import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
 import { useDispatch, useSelector } from "react-redux";
+import {RootState} from "../../store"
+
+interface Data { 
+  username: string;
+  password: string;
+}
 
 function Login() {
 
   const dispatch = useDispatch();
 
-  const select = useSelector(state => ({
+  const select = useSelector((state: RootState) => ({
     user: state.login.user,
     error: state.login.error,
   }));

@@ -1,3 +1,8 @@
+import { 
+  MODAL_OPEN, 
+  MODAL_CLOSE, 
+} from "../constants";
+
 // Начальное состояние для управления модалками
 const initialState = {
   name: ''
@@ -14,9 +19,9 @@ interface Action {
 
 function modalReducer(state = initialState, action: Action){
   switch (action.type) {
-    case "modal/open":
+    case MODAL_OPEN:
       return { ...state, name: action.payload.name};
-    case "modal/close":
+    case MODAL_CLOSE:
       return { ...state, name: null };
     default:
       return state;
