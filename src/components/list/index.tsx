@@ -21,7 +21,7 @@ interface ListProps {
 function List(props: ListProps) {
   return (
     <>
-      <div className='List'>{props.items.map(item =>
+      <div className='List' data-testid={'list'}>{props.items.map(item =>
         <div key={item.id} className='List-item'>
           {props.renderItem(item)}
         </div>

@@ -9,8 +9,8 @@ interface LayoutProps {
 function Layout({children, head}: LayoutProps){
 
   return (
-    <div className='Layout'>
-      <div className='Layout-head'>
+    <div className='Layout' data-testid={'layout'}>
+      <div className='Layout-head' data-testid={'layout-head'}>
         {head || 'Интернет-магазин'}
       </div>
       <div className='Layout-content'>

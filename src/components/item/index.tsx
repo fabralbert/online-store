@@ -20,6 +20,7 @@ interface ItemProps {
   onAdd: (id: string) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 function Item(props: ItemProps) {
 
   const callbacks = {
@@ -28,7 +29,7 @@ function Item(props: ItemProps) {
   };
 
   return (
-    <div className='Item'>
+    <div className='Item' data-testid={'item'}>
         <div className='Item-head'><img alt='book1' src={props.item.img}/></div>
         <div className='Item-prop'>
           <div className='Item-label'>Название:</div>
@@ -42,8 +43,8 @@ function Item(props: ItemProps) {
         </div>
         <div className='Item-footer'>
           {props.user ? 
-          <button className='Item-btn' onClick={callbacks.onAdd}>Добавить</button> :
-          <div className='Item-warning' onClick={callbacks.onOpen}>«Чтобы добавить товар в корзину залогинтесь»</div>
+          <button className='Item-btn' onClick={callbacks.onAdd} data-testid={'btn-add'}>Добавить</button> :
+          <div className='Item-warning' onClick={callbacks.onOpen} data-testid={'warning'}>«Чтобы добавить товар в корзину залогинтесь»</div>
           }
         </div>
     </div>

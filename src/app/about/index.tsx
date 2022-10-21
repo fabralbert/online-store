@@ -7,7 +7,7 @@ import AboutInfo from "../../components/about-info";
 function Main() {
 
   return (
-    <Layout head={<h1>О магазине</h1>}>
+    <Layout head={<h1>О магазине</h1>} data-testid={'about'}>
       <TopContainer/>
       <ToolsContainer/>
       <AboutInfo/>

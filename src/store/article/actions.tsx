@@ -3,18 +3,18 @@ import { Dispatch } from "redux";
 import { ArticleAction, ArticleActionTypes } from "./types";
 
 interface Data {
-  countLeft: number;
+  countLeft: number | string;
   description: string;
-  price: number;
+  price: number | string;
   title: string;
   img: string;
   id: string;
 }
 
 interface DataSave {
-  countLeft: number;
+  countLeft: number | string;
   description: string;
-  price: number;
+  price: number | string;
   title: string;
 }
 
@@ -39,6 +39,8 @@ const actionsArticle =  {
   },
 
   editArticle: (data: DataSave) => {
+
+    console.log('edit', data)
     return {type: ArticleActionTypes.ARTICLE_EDIT, payload: {data}}
   },
 }

@@ -1,10 +1,9 @@
 import React, {useCallback} from "react";
 import LayoutFlex from "../../components/layouts/layout-flex";
-import FormQuestion from "../../components/login-form"
+import LoginForm from "../../components/login-form"
 import LayoutModal from "../../components/layouts/layout-modal";
 import actionsModals from "../../store/modals/actions";
 import actionsLogin from "../../store/login/actions";
-import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../hooks/useTypesSelector"
 import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
@@ -36,7 +35,7 @@ function Login() {
   return (
     <LayoutModal title={'Логин'} onClose={callbacks.closeModal}>
       <LayoutFlex flex={'center'}>
-        <FormQuestion onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error} user={select.user}/>
+        <LoginForm onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error} user={select.user}/>
       </LayoutFlex>
     </LayoutModal>
   )

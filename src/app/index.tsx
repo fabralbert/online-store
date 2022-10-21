@@ -12,9 +12,9 @@ import { useAppSelector } from "../hooks/useTypesSelector"
  * Приложение
  * @return {React.ReactElement} Виртуальные элементы React
  */
-function App(): React.ReactElement { //@TODO
+function App(): React.ReactElement {
 
-  const modal = useAppSelector(state => state.modals.name); //@TODO
+  const modal = useAppSelector(state => state.modals.name);
   return (
     <>
         <Routes>

@@ -12,7 +12,7 @@ interface FieldProps {
 function Field({label, error, children, width}: FieldProps){
 
   return (
-    <div className='Field'>
+    <div className='Field' data-testid={'field'}>
       <label className='Field-label'>{label}</label>
       <div className='Field-input'>
         {children}

@@ -112,7 +112,7 @@ function LoginForm(props: LoginFormProps) {
   }, [isValidPassed, props.errorLogin, props.onClose, props.user])
 
   return (
-      <form className='LoginForm' onSubmit={callbacks.onLogin}>
+      <form className='LoginForm' onSubmit={callbacks.onLogin} data-testid={'login-form'}>
         <h1 className='LoginForm-title'>Авторизация</h1>
         {
           inputs.map((input) => (
@@ -121,10 +121,10 @@ function LoginForm(props: LoginFormProps) {
           </Field>
           ))
         }
-        <div className='LoginForm-loginError'>{isValidPassed && props.errorLogin}</div>
+        <div className='LoginForm-loginError' data-testid={'error'}>{isValidPassed && props.errorLogin}</div>
         <div className='LoginForm-buttons'>
-          <button className='LoginForm-cancelBtn' type='button' onClick={callbacks.resetForm}>Отмена</button>
-          <button className='LoginForm-saveBtn' type='submit'>Войти</button>
+          <button className='LoginForm-cancelBtn' type='button' onClick={callbacks.resetForm} data-testid={'on-close'}>Отмена</button>
+          <button className='LoginForm-saveBtn' type='submit' data-testid={'on-login'}>Войти</button>
         </div>
       </form>
   );

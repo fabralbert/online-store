@@ -21,7 +21,7 @@ function ListBasket(props: ListBasketProps) {
 
   return (
     <>
-      <div className='ListBasket'>{props.items.map(item =>
+      <div className='ListBasket' data-testid={'basket-list'}>{props.items.map(item =>
         <div key={item.id} className='ListBasket-item'>
           {props.renderItem(item)}
         </div>

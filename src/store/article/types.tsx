@@ -2,12 +2,22 @@
  interface Data {
   id: string;
   title: string;
-  price: number;
+  price: number | string;
   img: string;
   description: string;
-  countLeft: number;
+  countLeft: number | string;
 }
 
+interface DataEdit {
+  title: string;
+  price: number | string;
+  description: string;
+  countLeft: number | string;
+}
+
+interface PayloadEdit {
+  data: DataEdit
+}
 interface Payload {
   data: Data
 }
@@ -34,7 +44,7 @@ interface ArticleLoadErrorAction {
 }
 interface ArticleEditAction {
   type: ArticleActionTypes.ARTICLE_EDIT;
-  payload: Payload;
+  payload: PayloadEdit;
 }
 
 export type ArticleAction = ArticleLoadAction | ArticleLoadSuccessAction | ArticleLoadErrorAction | ArticleEditAction

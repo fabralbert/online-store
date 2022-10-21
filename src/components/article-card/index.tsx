@@ -6,8 +6,8 @@ interface Article {
   id: string;
   img: string;
   title: string;
-  price: number;
-  countLeft: number;
+  price: number | string;
+  countLeft: number | string;
   description: string;
 }
 
@@ -28,7 +28,7 @@ function ArticleCard(props: ArticleCardProps) {
   };
 
   return (
-    <div className='ArticleCard'>
+    <div className='ArticleCard' data-testid="article-card">
       <div className='ArticleCard-content'>
         <div className='ArticleCard-left'>
           <div className='ArticleCard-prop'>
@@ -42,7 +42,7 @@ function ArticleCard(props: ArticleCardProps) {
           </div>
           <div className='ArticleCard-prop'>
             <div className='ArticleCard-label'>Цена:</div>
-            <div className='ArticleCard-value'>{numberFormat(props.article.price)} ₽</div>
+            <div className='ArticleCard-value'>{numberFormat(Number(props.article.price))} ₽</div>
           </div>
           <div className='ArticleCard-prop'>
             <div className='ArticleCard-label'>В наличии:</div>
@@ -56,11 +56,11 @@ function ArticleCard(props: ArticleCardProps) {
       </div>
       {
         props.user ? 
-        <div className='ArticleCard-buttons'>
-          <button className='ArticleCard-btnAdd' onClick={callbacks.onAdd}>Добавить</button>
-         {props.user === 'admin' && <button className='ArticleCard-btnEdit' onClick={callbacks.onEdit}>Редактировать</button>} 
+        <div className='ArticleCard-buttons' data-testid="article-card-buttons">
+          <button className='ArticleCard-btnAdd' onClick={callbacks.onAdd} data-testid="article-card-btn-add">Добавить</button>
+         {props.user === 'admin' && <button className='ArticleCard-btn-edit' onClick={callbacks.onEdit} data-testid="article-card-btn-edit">Редактировать</button>} 
         </div> : 
-        <div className='ArticleCard-warning' onClick={callbacks.onOpen}>
+        <div className='ArticleCard-warning' onClick={callbacks.onOpen} data-testid="article-card-btn-open">
           «Чтобы добавить товар в корзину залогиньтесь»
         </div>
       }

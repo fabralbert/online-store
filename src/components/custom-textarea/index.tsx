@@ -22,9 +22,9 @@ function CustomTextArea(props: CustomTextAreaProps) {
 
   return (
     <>
-      <textarea className='CustomTextArea' rows={props.rows} name={props.name} value={props.value} placeholder={props.placeholder} onChange={onChangeValue} style={{width: `${props.width}px`}}/>
+      <textarea className='CustomTextArea' rows={props.rows} name={props.name} value={props.value} placeholder={props.placeholder} onChange={onChangeValue} style={{width: `${props.width}px`}} data-testid={'custom-textarea'}/>
       {!props.error &&
-      <div className='CustomTextArea-counter'>
+      <div className='CustomTextArea-counter' data-testid={'custom-textarea-counter'}>
           <span className='CustomTextArea-total' style={{color: `${props.totalCount > props.countLimit ? 'red' : 'black'}`}}>{props.totalCount}</span>
           <span style={{color: `${props.totalCount > props.countLimit ? 'red' : 'black'}`}}>/{props.countLimit}</span>
       </div>}

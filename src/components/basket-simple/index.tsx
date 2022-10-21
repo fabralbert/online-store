@@ -16,7 +16,7 @@ function BasketSimple(props: BasketSimpleProps) {
     <>
       {
         props.user && 
-        <div className='BasketSimple'>
+        <div className='BasketSimple' data-testid='basket-simple'>
           <span className='BasketSimple-label'>В корзине:</span>
           <span className='BasketSimple-total'>{props.totalAmount ? `${props.totalAmount} ${plural(props.totalAmount, 'товар', 'товара', 'товаров')} на сумму ${numberFormat(props.sum)} ₽` : 'пусто'}</span>
           <div className='BasketSimple-button' onClick={props.onOpen}/>

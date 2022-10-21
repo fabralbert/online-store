@@ -26,13 +26,13 @@ function LayoutModal(props: LayoutModalProps) {
   });
 
   return (
-    <div className='LayoutModal'>
+    <div className='LayoutModal' data-testid={'layout-modal'}>
       <div className='LayoutModal-frame' ref={frame}>
         <div className='LayoutModal-head'>
-          <h1 className='LayoutModal-title'>
-            {props.title}
+          <h1 className='LayoutModal-title' data-testid={'layout-title'}>
+            {props.title || 'Модальное окно'}
           </h1>
-          <button className='LayoutModal-close' onClick={props.onClose}>Закрыть</button>
+          <button className='LayoutModal-close' onClick={props.onClose} data-testid={'close-btn'}>Закрыть</button>
         </div>
         <div className='LayoutModal-content'>
           {props.children}

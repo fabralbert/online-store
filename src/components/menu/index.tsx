@@ -15,7 +15,7 @@ interface MenuProps {
 function Menu(props: MenuProps) {
 
   return (
-    <ul className='Menu'>
+    <ul className='Menu' data-testid={'menu'}>
       {props.items.map(item => (
         <li key={item.key} className='Menu-item'>
           <Link to={item.link}>{item.title}</Link>

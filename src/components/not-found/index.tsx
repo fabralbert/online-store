@@ -4,7 +4,7 @@ import './style.css';
 function NotFound() {
 
   return (
-    <div className="NotFound">«Что-то пошло не так. Данной страницы не существует».</div>
+    <div className="NotFound" data-testid={'not-found'}>«Что-то пошло не так. Данной страницы не существует».</div>
   )
 }
 

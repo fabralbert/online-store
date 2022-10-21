@@ -5,7 +5,7 @@ export enum CatalogActionTypes {
 }
 
 interface Payload {
-  data: Item[]        // @todo
+  data: Item[]
 }
 
 interface CatalogLoadAction {

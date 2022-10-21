@@ -24,9 +24,9 @@ function CustomInput(props: CustomInputProps){
 
   return (
     <>
-      <input className='CustomInput' type={props.type} name={props.name} value={props.value} placeholder={props.placeholder} onChange={onChangeValue} style={{width: `${props.width}px`}}/>
+      <input className='CustomInput' type={props.type} name={props.name} value={props.value} placeholder={props.placeholder} onChange={onChangeValue} style={{width: `${props.width}px`}} data-testid={'custom-input'}/>
       {!props.error && props.isCount && props.totalCount !== undefined && props.countLimit &&
-      <div className='CustomInput-counter'>
+      <div className='CustomInput-counter' data-testid={'custom-input-counter'}>
           <span className='CustomInput-total' style={{color: `${props.totalCount > props.countLimit ? 'red' : 'black'}`}}>{props.totalCount}</span>
           <span style={{color: `${props.totalCount > props.countLimit ? 'red' : 'black'}`}}>/{props.countLimit}</span>
       </div>

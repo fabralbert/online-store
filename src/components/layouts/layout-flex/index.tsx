@@ -9,7 +9,7 @@ interface LayoutFlexProps {
 function LayoutFlex({children, flex}: LayoutFlexProps){
 
   return (
-    <div className={`LayoutFlex ${flex}`}>
+    <div className={`LayoutFlex ${flex}`} data-testid={'layout-flex'}>
       {children}
     </div>
   )

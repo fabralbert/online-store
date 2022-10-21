@@ -12,6 +12,7 @@ const actionsBasket = {
       // Ищем товар в корзие, чтобы увеличить его количество. Заодно получаем новый массив items
       let exists = false;
       
+      // eslint-disable-next-line array-callback-return
       const items = getState().basket.items.map((item) => {
         
         let result = item;
@@ -41,6 +42,10 @@ const actionsBasket = {
         sum += item.price;
       }
 
+      const check = {
+        items, sum, totalAmount: items.length
+      }
+      console.log('check', check)
       dispatch({type: BasketActionTypes.BASKET_ADD, payload: {items, sum, totalAmount: items.length}});
     }
   },
@@ -72,6 +77,11 @@ const actionsBasket = {
       const sum = items.reduce((acc, item) => {
         return item.amount * item.price + acc
       }, 0)
+
+      const check = {
+        items, sum, totalAmount: items.length
+      }
+      console.log('checkremove', check)
 
       dispatch({type: BasketActionTypes.BASKET_REMOVE, payload: {items, sum, totalAmount: items.length}});
     }

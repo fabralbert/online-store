@@ -13,9 +13,9 @@ import { useAppSelector } from "../../hooks/useTypesSelector"
 import { useAppDispatch } from "../../hooks/useTypesDispatch";
 
 interface Data {
-  countLeft: number;
+  countLeft: number | string;
   description: string;
-  price: number;
+  price: number | string;
   title: string;
 }
 
@@ -36,6 +36,8 @@ function Article(){
     isLoading: state.article.isLoading,
     user: state.login.user
   }));
+
+  console.log(select.article, select.isLoading)
 
   const [isEdit, setIsEdit] = useState(false)
 

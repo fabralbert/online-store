@@ -7,15 +7,15 @@ interface Article {
   id: string;
   img: string;
   title: string;
-  price: number;
-  countLeft: number;
+  price: number | string;
+  countLeft: number | string;
   description: string;
 }
 
 interface DataSave {
   title: string;
-  price: number;
-  countLeft: number;
+  price: number | string;
+  countLeft: number | string;
   description: string;
 }
 
@@ -62,7 +62,7 @@ function ArticleCardEdit(props: ArticleCardEditProps) {
       setData(prevData => ({...prevData, [name]: value}));
     },
 
-    validation: (name: string) => {
+     validation: (name: string) => {
       const value = data[name as keyof typeof data] 
       
       if (!value.toString().trim()) {
@@ -142,7 +142,6 @@ function ArticleCardEdit(props: ArticleCardEditProps) {
     const isData = Object.values(data).some(value => value === "");
 
     if (isValidPassed && isDataErrorEmpty && !isData) {
-      // сохраняем данные в state
       props.onSave(data)
     }
     setIsValidPassed(false)
@@ -150,7 +149,7 @@ function ArticleCardEdit(props: ArticleCardEditProps) {
 
   
   return (
-    <form className='ArticleCardEdit' onSubmit={callbacks.onSave}>
+    <form className='ArticleCardEdit' onSubmit={callbacks.onSave} data-testid="article-card-edit">
       <div className='ArticleCardEdit-content'>
         <div className='ArticleCardEdit-left'>
           <div className='ArticleCardEdit-prop'>
@@ -181,8 +180,8 @@ function ArticleCardEdit(props: ArticleCardEditProps) {
         </div>
       </div>
       <div className='ArticleCardEdit-buttons'>
-        <button className='ArticleCardEdit-btnAdd' onClick={callbacks.onCancel}>Отмена</button>
-        <button className='ArticleCardEdit-btnEdit' type='submit'>сохранить</button> 
+        <button className='ArticleCardEdit-btnAdd' onClick={callbacks.onCancel} data-testid="article-card-edit-btn-cancel">Отмена</button>
+        <button className='ArticleCardEdit-btnEdit' type='submit' data-testid="article-card-btn-save">сохранить</button> 
       </div>
     </form>
   )

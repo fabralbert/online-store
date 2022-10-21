@@ -1,7 +1,7 @@
 import {BasketAction, BasketState, BasketActionTypes } from "./types";
 
 const initialState: BasketState = {
-  items: [], //@todo было items: [] as Array<ItemBasket>
+  items: [],
   sum: 0,
   totalAmount: 0,
 }
@@ -12,7 +12,7 @@ const initialState: BasketState = {
     case BasketActionTypes.BASKET_ADD:
       return { 
         ...state, 
-        items: action.payload.items, 
+        items: action.payload.items,
         sum: action.payload.sum, 
         totalAmount: action.payload.totalAmount,
       };
