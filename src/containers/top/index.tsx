@@ -15,20 +15,18 @@ function TopContainer() {
 
   const dispatch = useAppDispatch();
 
-  const callbacks = {
-    // Открытие корзины
-    openModalLogin: useCallback(() => {
-      dispatch(actionsModals.open('login'));
-    }, []),
-    // Открытие корзины
-    onUnlogin: useCallback(() => {
-      dispatch(actionsLogin.signOut());
-    }, []),
-  };
+  // Открытие корзины
+  const openModalLogin = useCallback(() => {
+    dispatch(actionsModals.open('login'));
+  }, [])
+  // Открытие корзины
+  const onUnlogin = useCallback(() => {
+    dispatch(actionsLogin.signOut());
+  }, [])
 
   return (
     <LayoutFlex flex="center">
-      <LoginBtn onOpen={callbacks.openModalLogin} user={select.user} onUnlogin={callbacks.onUnlogin}/>
+      <LoginBtn onOpen={openModalLogin} user={select.user} onUnlogin={onUnlogin}/>
     </LayoutFlex>
   );
 }

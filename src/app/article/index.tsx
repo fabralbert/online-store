@@ -41,25 +41,28 @@ function Article(){
 
   const [isEdit, setIsEdit] = useState(false)
 
-  const callbacks = {
-    // добавление товара в корзину
-    onAdd: useCallback((id: string) => {
-      dispatch(actionsBasket.addToBasket(id))
-    }, []),
-    // открытие модалки логина
-    openModalLogin: useCallback(() => {
-      dispatch(actionsModals.open('login'));
-    }, []),
-    // редактирование
-    onEdit: useCallback(() => setIsEdit(!isEdit), [isEdit]),
-    // отмена редактирования
-    onCancel: useCallback(() => setIsEdit(!isEdit), [isEdit]),
-    // сохранение новых данных
-    onSave: useCallback((data: Data) => { 
-      dispatch(actionsArticle.editArticle(data));
-      setIsEdit(!isEdit);
-    }, [isEdit]),
-  };
+  // добавление товара в корзину
+  const onAdd = useCallback((id: string) => {
+    dispatch(actionsBasket.addToBasket(id))
+  }, [])
+  
+  // открытие модалки логина
+  const openModalLogin = useCallback(() => {
+    dispatch(actionsModals.open('login'));
+  }, [])
+
+  // редактирование
+  const onEdit = useCallback(() => setIsEdit(!isEdit), [isEdit])
+
+  // отмена редактирования
+  const onCancel = useCallback(() => setIsEdit(!isEdit), [isEdit])
+  
+  // сохранение новых данных
+  const onSave = useCallback((data: Data) => { 
+    dispatch(actionsArticle.editArticle(data));
+    setIsEdit(!isEdit);
+  }, [isEdit])
+
   
   // если данные пока не загрузились, то отрисовываем loader
   if (select.isLoading) {
@@ -77,8 +80,8 @@ function Article(){
       <TopContainer/>
       <ToolsContainer/>
       {isEdit ? 
-      <ArticleCardEdit article={select.article} onSave={callbacks.onSave} onCancel={callbacks.onCancel}/> : 
-      <ArticleCard article={select.article} onAdd={callbacks.onAdd} user={select.user} onOpen={callbacks.openModalLogin} onEdit={callbacks.onEdit}/> 
+      <ArticleCardEdit article={select.article} onSave={onSave} onCancel={onCancel}/> : 
+      <ArticleCard article={select.article} onAdd={onAdd} user={select.user} onOpen={openModalLogin} onEdit={onEdit}/> 
       }
     </Layout>
   )

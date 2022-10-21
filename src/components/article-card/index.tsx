@@ -21,11 +21,9 @@ interface ArticleCardProps {
 
 function ArticleCard(props: ArticleCardProps) {
 
-  const callbacks = {
-    onAdd: () => props.onAdd(props.article.id),
-    onOpen: () => props.onOpen(),
-    onEdit: () => props.onEdit(),
-  };
+  const onAdd = () => props.onAdd(props.article.id);
+  const onOpen = () => props.onOpen();
+  const onEdit = () => props.onEdit();
 
   return (
     <div className='ArticleCard' data-testid="article-card">
@@ -34,7 +32,7 @@ function ArticleCard(props: ArticleCardProps) {
           <div className='ArticleCard-prop'>
             <img className='ArticleCard-img' src={props.article.img} alt="book" />
           </div>
-        </div>
+    ArticleCard    </div>
         <div className='ArticleCard-right'>
           <div className='ArticleCard-prop'>
             <div className='ArticleCard-label'>Название:</div>
@@ -57,10 +55,10 @@ function ArticleCard(props: ArticleCardProps) {
       {
         props.user ? 
         <div className='ArticleCard-buttons' data-testid="article-card-buttons">
-          <button className='ArticleCard-btnAdd' onClick={callbacks.onAdd} data-testid="article-card-btn-add">Добавить</button>
-         {props.user === 'admin' && <button className='ArticleCard-btn-edit' onClick={callbacks.onEdit} data-testid="article-card-btn-edit">Редактировать</button>} 
+          <button className='ArticleCard-btnAdd' onClick={onAdd} data-testid="article-card-btn-add">Добавить</button>
+         {props.user === 'admin' && <button className='ArticleCard-btnEdit' onClick={onEdit} data-testid="article-card-btn-edit">Редактировать</button>} 
         </div> : 
-        <div className='ArticleCard-warning' onClick={callbacks.onOpen} data-testid="article-card-btn-open">
+        <div className='ArticleCard-warning' onClick={onOpen} data-testid="article-card-btn-open">
           «Чтобы добавить товар в корзину залогиньтесь»
         </div>
       }

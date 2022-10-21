@@ -54,51 +54,49 @@ function LoginForm(props: LoginFormProps) {
     },
   ]
 
-  // все наши функции
-  const callbacks = {
-    // стираем форму
-    resetForm: (e: React.FormEvent) => { 
-      e.preventDefault();
-      setData({
-        login: '',
-        password: '',
-      })
-      // закрываем модалку
-      props.onClose()
-    },
 
-    // показываем все наши данные
-    onLogin: (e: React.FormEvent) => {
-      e.preventDefault();
-      // Валидируем по кнопке
-      for (let inputItemData in data){
-        callbacks.validation(inputItemData)
-      }
+  // стираем форму
+  const resetForm = (e: React.FormEvent) => { 
+    e.preventDefault();
+    setData({
+      login: '',
+      password: '',
+    })
+    // закрываем модалку
+    props.onClose()
+  }
 
-      // проверяем на пустые поля, если везде есть какие-либо знаки значит true
-      const isDataEmpty = Object.values(data).every(value => value.trim() !== "");
-      // устанавливаем, то что валидация пройдена
-      if (isDataEmpty){
-        setIsValidPassed(true)
-      }
-      // вход
-      props.onLogin({username: data.login, password: data.password})
-    },
+  // показываем все наши данные
+  const onLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Валидируем по кнопке
+    for (let inputItemData in data){
+      validation(inputItemData)
+    }
 
-    // для смены состояния инпутов
-    onChangeValue: useCallback((value: string, name: string) => {
-      setData(prevData => ({...prevData, [name]: value}));
-    }, []),
+    // проверяем на пустые поля, если везде есть какие-либо знаки значит true
+    const isDataEmpty = Object.values(data).every(value => value.trim() !== "");
+    // устанавливаем, то что валидация пройдена
+    if (isDataEmpty){
+      setIsValidPassed(true)
+    }
+    // вход
+    props.onLogin({username: data.login, password: data.password})
+  }
 
-    // Валидация
-    validation: (name: string) => {
-      if (!data[name as keyof typeof data].trim()) {
-        setDataError(prevData => ({...prevData, [name]: 'Поле пустое. Заполните пожалуйста.'}))
-        setIsValidPassed(false)
-        return
-      } else {
-        setDataError(prevData => ({...prevData, [name]: ''}))
-      }
+  // для смены состояния инпутов
+  const onChangeValue = useCallback((value: string, name: string) => {
+    setData(prevData => ({...prevData, [name]: value}));
+  }, [])
+
+  // Валидация
+  const validation = (name: string) => {
+    if (!data[name as keyof typeof data].trim()) {
+      setDataError(prevData => ({...prevData, [name]: 'Поле пустое. Заполните пожалуйста.'}))
+      setIsValidPassed(false)
+      return
+    } else {
+      setDataError(prevData => ({...prevData, [name]: ''}))
     }
   }
 
@@ -108,22 +106,21 @@ function LoginForm(props: LoginFormProps) {
       // закрываем модалку
       props.onClose()
     }
-
   }, [isValidPassed, props.errorLogin, props.onClose, props.user])
 
   return (
-      <form className='LoginForm' onSubmit={callbacks.onLogin} data-testid={'login-form'}>
+      <form className='LoginForm' onSubmit={onLogin} data-testid={'login-form'}>
         <h1 className='LoginForm-title'>Авторизация</h1>
         {
           inputs.map((input) => (
           <Field label={input.label} error={dataError[input.name as keyof typeof dataError]} key={input.id} width={400}>
-            <CustomInput type={input.type} name={input.name} value={data[input.name as keyof typeof data]} onChange={callbacks.onChangeValue} width={400}/>
+            <CustomInput type={input.type} name={input.name} value={data[input.name as keyof typeof data]} onChange={onChangeValue} width={400}/>
           </Field>
           ))
         }
         <div className='LoginForm-loginError' data-testid={'error'}>{isValidPassed && props.errorLogin}</div>
         <div className='LoginForm-buttons'>
-          <button className='LoginForm-cancelBtn' type='button' onClick={callbacks.resetForm} data-testid={'on-close'}>Отмена</button>
+          <button className='LoginForm-cancelBtn' type='button' onClick={resetForm} data-testid={'on-close'}>Отмена</button>
           <button className='LoginForm-saveBtn' type='submit' data-testid={'on-login'}>Войти</button>
         </div>
       </form>

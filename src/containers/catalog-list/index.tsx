@@ -28,18 +28,16 @@ function CatalogList() {
     user: state.login.user,
   }));
 
-  const callbacks = {
-    // добавление товара в корзину
-    onAdd: useCallback((id: string) => dispatch(actionsBasket.addToBasket(id)), []),
-    // Открытие модалки логина
-    openModalLogin: useCallback(() => {
-      dispatch(actionsModals.open('login'));
-    }, []),
-  };
+  // добавление товара в корзину
+  const onAdd = useCallback((id: string) => dispatch(actionsBasket.addToBasket(id)), [])
+  // Открытие модалки логина
+  const openModalLogin = useCallback(() => {
+    dispatch(actionsModals.open('login'));
+  }, [])
 
   const renders = {
     item: useCallback((item: Item) => (
-      <Item item={item} link={`/articles/${item.id}`} onAdd={callbacks.onAdd} user={select.user} onOpen={callbacks.openModalLogin}/>
+      <Item item={item} link={`/articles/${item.id}`} onAdd={onAdd} user={select.user} onOpen={openModalLogin}/>
     ), [select.user]),
   }
 

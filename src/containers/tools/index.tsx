@@ -18,12 +18,10 @@ function ToolsContainer() {
     user: state.login.user,
   }));
 
-  const callbacks = {
-    // Открытие корзины
-    openModalBasket: useCallback(() => {
-      dispatch(actionsModals.open('basket'));
-    }, []),
-  };
+  // Открытие корзины
+  const openModalBasket = useCallback(() => {
+    dispatch(actionsModals.open('basket'));
+  }, [])
 
   const options = {
     menu: useMemo(() => ([
@@ -35,7 +33,7 @@ function ToolsContainer() {
   return (
     <LayoutFlex flex='between'>
       <Menu items={options.menu}/>
-      <BasketSimple onOpen={callbacks.openModalBasket} totalAmount={select.totalAmount} sum={select.sum} user={select.user}/>
+      <BasketSimple onOpen={openModalBasket} totalAmount={select.totalAmount} sum={select.sum} user={select.user}/>
     </LayoutFlex>
   );
 }

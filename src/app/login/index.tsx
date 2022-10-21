@@ -21,21 +21,19 @@ function Login() {
     error: state.login.error,
   }));
 
-  const callbacks = {
-    // Закрытие любой модалки
-    closeModal: useCallback(() => {
-      dispatch(actionsModals.close());
-    }, []),
-    // Логин
-    onLogin: useCallback((data: Data) => {
-      dispatch(actionsLogin.signIn(data));
-    }, []),
-  };
+  // Закрытие любой модалки
+  const closeModal = useCallback(() => {
+    dispatch(actionsModals.close());
+  }, [])
+  // Логин
+  const onLogin = useCallback((data: Data) => {
+    dispatch(actionsLogin.signIn(data));
+  }, [])
   
   return (
-    <LayoutModal title={'Логин'} onClose={callbacks.closeModal}>
+    <LayoutModal title={'Логин'} onClose={closeModal}>
       <LayoutFlex flex={'center'}>
-        <LoginForm onClose={callbacks.closeModal} onLogin={callbacks.onLogin} errorLogin={select.error} user={select.user}/>
+        <LoginForm onClose={closeModal} onLogin={onLogin} errorLogin={select.error} user={select.user}/>
       </LayoutFlex>
     </LayoutModal>
   )

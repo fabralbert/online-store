@@ -30,34 +30,32 @@ function Basket() {
     sum: state.basket.sum,
   }));
 
-  const callbacks = {
-    // Закрытие любой модалки
-    closeModal: useCallback(() => {
-      dispatch(actionsModals.close());
-    }, []),
-    onRemove: useCallback((id: string) => {
-      dispatch(actionsBasket.removeFromBasket(id));
-    }, []),
-    onClear: useCallback(() => {
-      dispatch(actionsBasket.clearBasket());
-    }, []),
-  };
+  // Закрытие любой модалки
+  const closeModal = useCallback(() => {
+    dispatch(actionsModals.close());
+  }, [])
+  const onRemove = useCallback((id: string) => {
+    dispatch(actionsBasket.removeFromBasket(id));
+  }, [])
+  const onClear = useCallback(() => {
+    dispatch(actionsBasket.clearBasket());
+  }, [])
 
   const renders = {
     itemBasket: useCallback((item: ItemBasket) => (
       <ItemBasket
         item={item}
         link={`/articles/${item.id}`}
-        onLink={callbacks.closeModal}
-        onRemove={callbacks.onRemove}
+        onLink={closeModal}
+        onRemove={onRemove}
       />
     ), []),
   }
 
   return (
-    <LayoutModal title={'Корзина'} onClose={callbacks.closeModal}>
+    <LayoutModal title={'Корзина'} onClose={closeModal}>
       <ListBasket items={select.items} renderItem={renders.itemBasket}/>
-      <BasketTotal sum={select.sum} onClear={callbacks.onClear}/>
+      <BasketTotal sum={select.sum} onClear={onClear}/>
     </LayoutModal>
   )
 }
