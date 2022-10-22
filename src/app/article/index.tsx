@@ -37,8 +37,6 @@ function Article(){
     user: state.login.user
   }));
 
-  console.log(select.article, select.isLoading)
-
   const [isEdit, setIsEdit] = useState(false)
 
   // добавление товара в корзину

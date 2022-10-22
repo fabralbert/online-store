@@ -27,8 +27,6 @@ function article(state = initialState, action: ArticleAction): ArticleState{
       return { ...state, data: {} as Data, isLoading: false};
 
     case ArticleActionTypes.ARTICLE_EDIT:
-      const check = {...state.data, ...action.payload.data}
-      console.log('check', check)
       return { ...state, data: {...state.data, ...action.payload.data}};
 
     default:

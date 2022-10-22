@@ -40,7 +40,6 @@ const actionsArticle =  {
 
   editArticle: (data: DataSave) => {
 
-    console.log('edit', data)
     return {type: ArticleActionTypes.ARTICLE_EDIT, payload: {data}}
   },
 }

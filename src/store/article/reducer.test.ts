@@ -105,7 +105,6 @@ describe("Article reducer", () => {
     }
 
     const newState = ArticleReducer(state, {type: ArticleActionTypes.ARTICLE_EDIT, payload})
-    console.log(newState)
     expect(newState).toEqual(data);
   });
 

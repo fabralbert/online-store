@@ -43,7 +43,7 @@ function CatalogList() {
 
   return (
     select.isLoading ?
-    <Loader/> :
+    <Loader data-testid="loader"/> :
     <List items={select.items} renderItem={renders.item}/>
   );
 }
