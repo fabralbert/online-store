@@ -31,11 +31,13 @@ function Login() {
   }, [])
   
   return (
-    <LayoutModal title={'Логин'} onClose={closeModal}>
-      <LayoutFlex flex={'center'}>
-        <LoginForm onClose={closeModal} onLogin={onLogin} errorLogin={select.error} user={select.user}/>
-      </LayoutFlex>
-    </LayoutModal>
+    <div data-testid={'login-page'}>
+      <LayoutModal title={'Логин'} onClose={closeModal}>
+        <LayoutFlex flex={'center'}>
+          <LoginForm onClose={closeModal} onLogin={onLogin} errorLogin={select.error} user={select.user}/>
+        </LayoutFlex>
+      </LayoutModal>
+    </div>
   )
 }
 

@@ -7,11 +7,13 @@ import NotFound from "../../components/not-found";
 function EmptyPage() {
 
   return (
-    <Layout head={<h1>Неизвестная страница</h1> }>
-      <TopContainer/>
-      <ToolsContainer/>
-      <NotFound/>
-    </Layout>
+    <div  data-testid={'empty'}>
+      <Layout head={<h1>Неизвестная страница</h1> }>
+        <TopContainer/>
+        <ToolsContainer/>
+        <NotFound/>
+      </Layout>
+    </div>
   )
 }
 

@@ -25,7 +25,6 @@ describe('App', () => {
 
     const aboutPage = screen.getByText('О магазине')
     fireEvent.click(aboutPage)
-
     expect(screen.getByText('В данном магазине вы можете приобрести различные книги.')).toBeInTheDocument();
   });
 })

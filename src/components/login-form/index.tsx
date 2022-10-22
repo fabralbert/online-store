@@ -42,14 +42,14 @@ function LoginForm(props: LoginFormProps) {
       id: 1,
       type: "text",
       name:'login',
-      placeholder: 'Ввведите логин',
+      placeholder: 'Логин',
       label: 'Логин',
     },
     {
       id: 2,
       type: "text",
       name:'password',
-      placeholder: 'Ввведите Пароль',
+      placeholder: 'Пароль',
       label: 'Пароль',
     },
   ]
@@ -114,7 +114,7 @@ function LoginForm(props: LoginFormProps) {
         {
           inputs.map((input) => (
           <Field label={input.label} error={dataError[input.name as keyof typeof dataError]} key={input.id} width={400}>
-            <CustomInput type={input.type} name={input.name} value={data[input.name as keyof typeof data]} onChange={onChangeValue} width={400}/>
+            <CustomInput type={input.type} name={input.name} value={data[input.name as keyof typeof data]} onChange={onChangeValue} width={400} placeholder={input.placeholder}/>
           </Field>
           ))
         }
