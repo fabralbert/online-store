@@ -32,7 +32,7 @@ function ArticleCard(props: ArticleCardProps) {
           <div className='ArticleCard-prop'>
             <img className='ArticleCard-img' src={props.article.img} alt="book" />
           </div>
-    ArticleCard    </div>
+        </div>
         <div className='ArticleCard-right'>
           <div className='ArticleCard-prop'>
             <div className='ArticleCard-label'>Название:</div>

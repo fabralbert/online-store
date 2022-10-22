@@ -6,6 +6,7 @@ import * as reducers from './exports';
 
 export const store = createStore(combineReducers(reducers), composeWithDevTools(applyMiddleware(thunk)));
 
+
 // export type RootState = ReturnType<typeof store.getState>
 export type RootState = ReturnType<typeof store.getState>
 
